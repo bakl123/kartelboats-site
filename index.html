@@ -2,71 +2,430 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>KARTEL Boats — Brutal Luxury</title>
+  <title>KARTEL Boats — Brutal Luxury на воде</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="KARTEL Boats — премиальные алюминиевые катера T-Rex 44. Brutal Luxury, сделанный в России: Волга, Саратов, офис в Москве."
+  />
   <style>
+    :root {
+      --bg: #050608;
+      --bg-soft: #0b0d10;
+      --accent: #cefe46;
+      --accent-soft: #8aa82c;
+      --text: #f5f5f5;
+      --muted: #9b9b9b;
+      --stroke: #25272b;
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #050505;
-      color: #f5f5f5;
+      background: radial-gradient(circle at top, #151922 0, #050608 40%, #020203 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      justify-content: space-between;
+      gap: 16px;
     }
-    .wrapper {
-      text-align: center;
-      max-width: 640px;
-      padding: 32px;
-      border: 1px solid #2a2a2a;
-      border-radius: 24px;
-      background: radial-gradient(circle at top, #141414 0, #020202 55%, #000000 100%);
-    }
+
     .logo {
-      font-size: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-main {
+      font-size: 22px;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      margin-bottom: 8px;
     }
-    .accent {
-      color: #CEFE46;
+
+    .logo-main span {
+      color: var(--accent);
     }
-    h1 {
-      font-size: 28px;
-      margin: 16px 0 8px;
-    }
-    p {
-      font-size: 15px;
-      line-height: 1.6;
-      opacity: 0.9;
-    }
-    .tag {
-      display: inline-flex;
-      margin-top: 16px;
-      padding: 6px 16px;
-      border-radius: 999px;
-      border: 1px solid #333;
+
+    .logo-sub {
       font-size: 11px;
-      letter-spacing: 0.18em;
       text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: inherit;
+      opacity: 0.85;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      padding: 6px 14px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(11, 13, 16, 0.7);
+      color: var(--muted);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(206, 254, 70, 0.7);
+    }
+
+    .hero {
+      margin-top: 8px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--stroke);
+      padding: 24px 24px 26px;
+      background:
+        radial-gradient(circle at top left, rgba(206, 254, 70, 0.14) 0, transparent 48%),
+        radial-gradient(circle at bottom right, rgba(163, 0, 0, 0.25) 0, transparent 50%),
+        linear-gradient(145deg, #050608 0, #050608 40%, #050608 100%);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.8fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 3vw, 32px);
+      line-height: 1.15;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #d7d7d7;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-grid strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      padding: 10px 20px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: linear-gradient(120deg, var(--accent) 0, #e0ff7a 50%, var(--accent-soft) 100%);
+      color: #111;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.04);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      padding: 9px 18px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: rgba(5, 6, 8, 0.7);
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-right {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--stroke);
+      padding: 14px 14px 12px;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.09) 0, transparent 60%),
+        linear-gradient(145deg, #050608 0, #050608 50%, #020203 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-tagline {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      margin-top: 2px;
+      border-radius: 18px;
+      border: 1px solid #2f3238;
+      padding: 14px 14px 12px;
+      background:
+        radial-gradient(circle at top left, rgba(206, 254, 70, 0.2) 0, transparent 65%),
+        linear-gradient(145deg, #050608 0, #050608 48%, #050608 100%);
+    }
+
+    .hero-card-title {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .hero-card-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-specs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 16px;
+      font-size: 12px;
+    }
+
+    .spec-label {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .spec-value {
+      font-size: 13px;
+    }
+
+    .hero-footer {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-footer span {
+      opacity: 0.85;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(5, 6, 8, 0.8);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #33ff99;
+      box-shadow: 0 0 12px rgba(51, 255, 153, 0.7);
+    }
+
+    footer {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      border-top: 1px solid #14151a;
+      padding-top: 10px;
       opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .hero {
+        padding: 18px 18px 20px;
+      }
+
+      .page {
+        padding-inline: 14px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="logo">
-      KARTEL <span class="accent">BOATS</span>
-    </div>
-    <h1>T-Rex 44. Brutal Luxury на воде.</h1>
-    <p>
-      Официальный сайт KARTEL Boats находится в разработке.
-      Совсем скоро здесь появится полноценная витрина флота T-Rex:
-      Flybridge, Cruiser и новая платформа Egoist / Family / Specialist.
-    </p>
-    <div class="tag">Volga · Russia · T-Rex 44</div>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-main">KARTEL <span>BOATS</span></div>
+        <div class="logo-sub">Brutal Luxury · Volga · Russia</div>
+      </div>
+      <nav>
+        <a href="#models">Модели</a>
+        <a href="#technology">Технологии</a>
+        <a href="#b2b">B2B / девелоперы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <section class="hero-left">
+        <div class="pill">
+          <div class="pill-dot"></div>
+          T-Rex 44 · алюминиевые катера Brutal Luxury
+        </div>
+        <h1 class="hero-title">
+          T-Rex 44. Свобода маршрута<br />
+          премиум-класса, сделанная в России.
+        </h1>
+        <p class="hero-text">
+          KARTEL Boats строит премиальные алюминиевые катера в Саратове, на Волге.
+          Сейчас доступны к покупке T-Rex 44 Flybridge и T-Rex 44 Cruiser —
+          с ходовыми испытаниями, готовыми маршрутами и персональной настройкой под владельца.
+        </p>
+        <div class="hero-grid">
+          <div><strong>База — Саратов</strong> · верфь на Волге</div>
+          <div><strong>Офис — Москва</strong> · Краснопресненская наб.</div>
+          <div><strong>Корпус T-Rex 44</strong> · алюминий, 13,6 м</div>
+          <div><strong>Фокус 2025–2026</strong> · Flybridge, Cruiser, Egoist</div>
+        </div>
+        <div class="hero-actions">
+          <button class="btn-primary">Связаться по покупке</button>
+          <button class="btn-ghost">Скачать презентацию T-Rex 44</button>
+        </div>
+      </section>
+
+      <aside class="hero-right">
+        <div class="hero-tagline">Флот KARTEL 2025</div>
+        <div class="hero-card">
+          <div class="hero-card-title">T-Rex 44 Flybridge / Cruiser</div>
+          <div class="hero-card-sub">
+            Две готовые лодки на базе корпуса T-Rex 44:
+            одна — с флайбриджем в ангаре, вторая — на воде, с установленными моторами.
+          </div>
+          <div class="hero-specs">
+            <div>
+              <div class="spec-label">Длина</div>
+              <div class="spec-value">13,6 м</div>
+            </div>
+            <div>
+              <div class="spec-label">Ширина</div>
+              <div class="spec-value">4,0 м</div>
+            </div>
+            <div>
+              <div class="spec-label">Материал</div>
+              <div class="spec-value">морской алюминий</div>
+            </div>
+            <div>
+              <div class="spec-label">Статус</div>
+              <div class="spec-value">готовы к сделке</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-footer">
+          <span>Далее — новая платформа T-Rex Egoist / Family / Specialist.</span>
+          <div class="badge">
+            <div class="badge-dot"></div>
+            Тест-драйв на Волге
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <span>© KARTEL Boats, 2025. Все права защищены.</span>
+      <span>Сделано на GitHub Pages · код проекта — kartelboats-site</span>
+    </footer>
   </div>
 </body>
 </html>
