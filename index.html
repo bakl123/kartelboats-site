@@ -1,431 +1,578 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>KARTEL Boats — Brutal Luxury на воде</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="KARTEL Boats — премиальные алюминиевые катера T-Rex 44. Brutal Luxury, сделанный в России: Волга, Саратов, офис в Москве."
-  />
-  <style>
-    :root {
-      --bg: #050608;
-      --bg-soft: #0b0d10;
-      --accent: #cefe46;
-      --accent-soft: #8aa82c;
-      --text: #f5f5f5;
-      --muted: #9b9b9b;
-      --stroke: #25272b;
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARTEL BOATS | T-Rex 44 · Brutal Luxury</title>
+    <meta name="description" content="KARTEL Boats: алюминиевые экспедиционные яхты класса Brutal Luxury на базе корпуса T-Rex 44. Производство в Саратове, офис в Москве.">
+    
+    <style>
+        /* KARTEL BOATS DESIGN SYSTEM v1.0 */
 
-    * {
-      box-sizing: border-box;
-    }
+        :root {
+            --bg-main: #000000;
+            --bg-card: #191919;
+            --bg-card-hover: #222222;
+            --accent: #CEFE46;
+            --text-main: #FFFFFF;
+            --text-muted: #808080;
+            
+            --container-width: 1240px;
+            --spacing-section: 120px;
+            --spacing-card: 24px;
+            
+            --border-thin: 1px solid #333333;
+            --border-accent: 1px solid var(--accent);
+            --transition: all 0.3s ease;
+        }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151922 0, #050608 40%, #020203 100%);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 20px 16px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
+        h1, h2, h3, h4, .btn-text {
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
 
-    .logo {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+        h1 {
+            font-size: clamp(32px, 5vw, 64px);
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
 
-    .logo-main {
-      font-size: 22px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-    }
+        h2 {
+            font-size: clamp(24px, 3vw, 40px);
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
 
-    .logo-main span {
-      color: var(--accent);
-    }
+        h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
 
-    .logo-sub {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-    }
+        p {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 600px;
+        }
 
-    nav {
-      display: flex;
-      gap: 18px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+        .mono {
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+        }
 
-    nav a {
-      text-decoration: none;
-      color: inherit;
-      opacity: 0.85;
-    }
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
 
-    nav a:hover {
-      opacity: 1;
-      color: var(--accent);
-    }
+        .section {
+            padding: var(--spacing-section) 0;
+            border-bottom: 1px solid #111;
+        }
 
-    .pill {
-      border-radius: 999px;
-      border: 1px solid var(--stroke);
-      padding: 6px 14px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(11, 13, 16, 0.7);
-      color: var(--muted);
-    }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 0;
+        }
 
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(206, 254, 70, 0.7);
-    }
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--bg-main);
+        }
 
-    .hero {
-      margin-top: 8px;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--stroke);
-      padding: 24px 24px 26px;
-      background:
-        radial-gradient(circle at top left, rgba(206, 254, 70, 0.14) 0, transparent 48%),
-        radial-gradient(circle at bottom right, rgba(163, 0, 0, 0.25) 0, transparent 50%),
-        linear-gradient(145deg, #050608 0, #050608 40%, #050608 100%);
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.8fr);
-      gap: 24px;
-      align-items: center;
-    }
+        .btn-primary:hover {
+            background-color: #E2FF80;
+        }
 
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+        }
 
-    .hero-title {
-      font-size: clamp(26px, 3vw, 32px);
-      line-height: 1.15;
-    }
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
 
-    .hero-title span {
-      color: var(--accent);
-    }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: var(--border-thin);
+        }
 
-    .hero-text {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #d7d7d7;
-    }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
 
-    .hero-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      font-size: 12px;
-      color: var(--muted);
-    }
+        .logo {
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+        
+        .logo span { color: var(--accent); }
 
-    .hero-grid strong {
-      color: var(--text);
-      font-weight: 500;
-    }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
+        .nav-link {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
 
-    .btn-primary {
-      border-radius: 999px;
-      border: none;
-      padding: 10px 20px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      background: linear-gradient(120deg, var(--accent) 0, #e0ff7a 50%, var(--accent-soft) 100%);
-      color: #111;
-      cursor: pointer;
-      font-weight: 600;
-    }
+        .nav-link:hover {
+            color: var(--accent);
+        }
 
-    .btn-primary:hover {
-      filter: brightness(1.04);
-    }
+        #hero_video {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            overflow: hidden;
+        }
 
-    .btn-ghost {
-      border-radius: 999px;
-      border: 1px solid var(--stroke);
-      padding: 9px 18px;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      background: rgba(5, 6, 8, 0.7);
-      color: var(--muted);
-      cursor: pointer;
-    }
+        #hero_video::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(206, 254, 70, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(206, 254, 70, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect width="100%" height="100%" fill="%230f0f0f"/><text x="50%" y="50%" fill="%23333" font-family="sans-serif" font-weight="bold" font-size="20" text-anchor="middle">VIDEO LOOP: T-REX 44 RUNNING IN DARK WATER</text></svg>') no-repeat center center;
+            background-size: cover;
+        }
 
-    .hero-right {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--stroke);
-      padding: 14px 14px 12px;
-      background:
-        radial-gradient(circle at top, rgba(255, 255, 255, 0.09) 0, transparent 60%),
-        linear-gradient(145deg, #050608 0, #050608 50%, #020203 100%);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-    .hero-tagline {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-    }
+        .hero-sub {
+            display: block;
+            margin-bottom: 32px;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
 
-    .hero-card {
-      margin-top: 2px;
-      border-radius: 18px;
-      border: 1px solid #2f3238;
-      padding: 14px 14px 12px;
-      background:
-        radial-gradient(circle at top left, rgba(206, 254, 70, 0.2) 0, transparent 65%),
-        linear-gradient(145deg, #050608 0, #050608 48%, #050608 100%);
-    }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--spacing-card);
+            margin-top: 40px;
+        }
 
-    .hero-card-title {
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
+        .card {
+            background-color: var(--bg-card);
+            border: var(--border-thin);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            text-decoration: none;
+            transition: var(--transition);
+            min-height: 300px;
+            overflow: hidden;
+        }
 
-    .hero-card-sub {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            background-color: var(--bg-card-hover);
+        }
 
-    .hero-specs {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px 16px;
-      font-size: 12px;
-    }
+        .card-large {
+            grid-column: span 12;
+        }
+        
+        @media (min-width: 900px) {
+            .card-large { grid-column: span 7; }
+            .card-medium { grid-column: span 5; }
+            .card-small { grid-column: span 12; display: flex; flex-direction: row; align-items: center; justify-content: space-between; min-height: 200px;}
+        }
 
-    .spec-label {
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-    }
+        .card-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            transition: var(--transition);
+            z-index: 0;
+        }
+        
+        .card:hover .card-bg { opacity: 0.5; transform: scale(1.02); }
 
-    .spec-value {
-      font-size: 13px;
-    }
+        .bg-flybridge { background: linear-gradient(to bottom, #2b2b2b, #000); }
+        .bg-cruiser { background: linear-gradient(to top right, #1a2a3a, #000); }
+        .bg-concept { background: repeating-linear-gradient(45deg, #111, #111 10px, #222 10px, #222 20px); }
 
-    .hero-footer {
-      margin-top: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      color: var(--muted);
-    }
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
 
-    .hero-footer span {
-      opacity: 0.85;
-    }
+        .badge {
+            display: inline-block;
+            background-color: rgba(206, 254, 70, 0.1);
+            color: var(--accent);
+            padding: 4px 8px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            border: 1px solid rgba(206, 254, 70, 0.2);
+        }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--stroke);
-      background: rgba(5, 6, 8, 0.8);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
+        .card-large .badge { background-color: var(--accent); color: #000; }
 
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #33ff99;
-      box-shadow: 0 0 12px rgba(51, 255, 153, 0.7);
-    }
+        .split-screen {
+            display: flex;
+            flex-direction: column;
+            border: var(--border-thin);
+        }
 
-    footer {
-      margin-top: 10px;
-      font-size: 11px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
-      border-top: 1px solid #14151a;
-      padding-top: 10px;
-      opacity: 0.8;
-    }
+        @media (min-width: 768px) {
+            .split-screen { flex-direction: row; }
+        }
 
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+        .split-media, .split-content {
+            flex: 1;
+        }
 
-      nav {
-        justify-content: flex-start;
-      }
+        .split-media {
+            background-color: #111;
+            min-height: 320px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .split-media::after {
+            content: "VIDEO: WELDING MACRO";
+            color: #555;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
 
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
+        .split-content {
+            padding: 64px 48px;
+            background-color: var(--bg-card);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-      .hero-right {
-        order: -1;
-      }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 32px 0;
+            border-top: 1px solid #333;
+            padding-top: 24px;
+        }
 
-      .hero {
-        padding: 18px 18px 20px;
-      }
+        .stat-item span {
+            display: block;
+            font-size: 24px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
 
-      .page {
-        padding-inline: 14px;
-      }
-    }
-  </style>
+        .stat-item label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        #geography_map {
+            background: linear-gradient(180deg, var(--bg-main) 0%, #0a1014 100%);
+            text-align: center;
+        }
+
+        .map-interface {
+            margin-top: 60px;
+            height: 400px;
+            background: #0f0f0f;
+            border: var(--border-thin);
+            position: relative;
+            background-image: radial-gradient(#333 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .map-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--accent);
+            cursor: pointer;
+        }
+
+        .map-point::after {
+            content: attr(data-label);
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 12px;
+            color: var(--text-main);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        footer {
+            padding: 80px 0 40px;
+            background-color: var(--bg-card);
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+        
+        .footer-cta-block {
+            margin-bottom: 60px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        
+        .footer-links a { color: var(--text-muted); text-decoration: none; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                gap: 12px;
+            }
+            .nav-links {
+                gap: 8px;
+            }
+            .btn {
+                padding: 10px 18px;
+                font-size: 11px;
+            }
+            .section {
+                padding: 80px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="page">
+
     <header>
-      <div class="logo">
-        <div class="logo-main">KARTEL <span>BOATS</span></div>
-        <div class="logo-sub">Brutal Luxury · Volga · Russia</div>
-      </div>
-      <nav>
-        <a href="#models">Модели</a>
-        <a href="#technology">Технологии</a>
-        <a href="#b2b">B2B / девелоперы</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
+        <div class="container nav-container">
+            <div class="logo">KARTEL <span>BOATS</span></div>
+            <div class="nav-links">
+                <a href="#lineup_selector" class="nav-link">Модели</a>
+                <a href="#engineering_dna" class="nav-link">Технологии</a>
+                <a href="#footer_cta" class="btn btn-primary" style="padding:10px 20px;">Тест-драйв</a>
+            </div>
+        </div>
     </header>
 
-    <main class="hero">
-      <section class="hero-left">
-        <div class="pill">
-          <div class="pill-dot"></div>
-          T-Rex 44 · алюминиевые катера Brutal Luxury
-        </div>
-        <h1 class="hero-title">
-          T-Rex 44. Свобода маршрута<br />
-          премиум-класса, сделанная в России.
-        </h1>
-        <p class="hero-text">
-          KARTEL Boats строит премиальные алюминиевые катера в Саратове, на Волге.
-          Сейчас доступны к покупке T-Rex 44 Flybridge и T-Rex 44 Cruiser —
-          с ходовыми испытаниями, готовыми маршрутами и персональной настройкой под владельца.
-        </p>
-        <div class="hero-grid">
-          <div><strong>База — Саратов</strong> · верфь на Волге</div>
-          <div><strong>Офис — Москва</strong> · Краснопресненская наб.</div>
-          <div><strong>Корпус T-Rex 44</strong> · алюминий, 13,6 м</div>
-          <div><strong>Фокус 2025–2026</strong> · Flybridge, Cruiser, Egoist</div>
-        </div>
-        <div class="hero-actions">
-          <button class="btn-primary">Связаться по покупке</button>
-          <button class="btn-ghost">Скачать презентацию T-Rex 44</button>
-        </div>
-      </section>
+    <main>
+        <!-- HERO VIDEO BLOCK -->
+        <section id="hero_video">
+            <div class="video-placeholder"></div>
+            <div class="container hero-content">
+                <span class="hero-sub mono">T-Rex 44 · Aluminum Expedition Yachts</span>
+                <h1>Право на свободу<br>маршрута</h1>
+                <p style="margin: 0 auto;">
+                    Премиальные алюминиевые катера KARTEL Boats на базе корпуса T-Rex 44.
+                    Сделаны на Волге, настроены под дальние маршруты и тяжёлую воду.
+                </p>
+                <div style="margin-top: 40px;">
+                    <a href="#lineup_selector" class="btn btn-primary">Выбрать T-Rex</a>
+                </div>
+            </div>
+        </section>
 
-      <aside class="hero-right">
-        <div class="hero-tagline">Флот KARTEL 2025</div>
-        <div class="hero-card">
-          <div class="hero-card-title">T-Rex 44 Flybridge / Cruiser</div>
-          <div class="hero-card-sub">
-            Две готовые лодки на базе корпуса T-Rex 44:
-            одна — с флайбриджем в ангаре, вторая — на воде, с установленными моторами.
-          </div>
-          <div class="hero-specs">
-            <div>
-              <div class="spec-label">Длина</div>
-              <div class="spec-value">13,6 м</div>
+        <!-- T-REX LINEUP SELECTOR -->
+        <section id="lineup_selector" class="section">
+            <div class="container">
+                <div class="mono" style="margin-bottom: 20px;">// MODEL LINEUP</div>
+                <h2>Витрина T-Rex 44</h2>
+                <p>Две готовые лодки и платформа следующего поколения — на едином корпусе T-Rex 44.</p>
+                
+                <div class="bento-grid">
+                    <a href="#" class="card card-large">
+                        <div class="card-bg bg-flybridge"></div>
+                        <div class="card-content">
+                            <span class="badge">Корпус в наличии</span>
+                            <h3>T-Rex 44 Flybridge</h3>
+                            <p style="color: #ccc;">Свобода в квадрате. Верхняя палуба для тех, кто смотрит дальше горизонта.</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card card-medium">
+                        <div class="card-bg bg-cruiser"></div>
+                        <div class="card-content">
+                            <span class="badge">Готов к тесту</span>
+                            <h3>T-Rex 44 Cruiser</h3>
+                            <p>Всепогодный перехватчик. Закрытый контур безопасности и дальний ход.</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card card-small">
+                        <div class="card-bg bg-concept"></div>
+                        <div class="card-content" style="width: 100%;">
+                            <span class="badge" style="border-color: #555; background: #222; color: #fff;">Concept</span>
+                            <div style="display:flex; justify-content:space-between; align-items:end; flex-wrap:wrap;">
+                                <div>
+                                    <h3>Платформа 2026</h3>
+                                    <p style="font-size: 14px;">Egoist / Family / Specialist</p>
+                                </div>
+                                <span class="mono">Future Series →</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div>
-              <div class="spec-label">Ширина</div>
-              <div class="spec-value">4,0 м</div>
+        </section>
+
+        <!-- ENGINEERING DNA -->
+        <section id="engineering_dna" class="section">
+            <div class="container">
+                <div class="split-screen">
+                    <div class="split-media"></div>
+                    <div class="split-content">
+                        <span class="mono" style="margin-bottom: 16px;">// DNA</span>
+                        <h2>Танк во фраке</h2>
+                        <p>
+                            Мы не полируем пластик. Мы варим авиационный алюминий АМГ5М.
+                            Киль 12 мм, борт 5 мм, силовой набор как у боевого катера.
+                            Внутри — тишина и комфорт, достойные пятизвёздочного отеля.
+                        </p>
+                        
+                        <div class="stat-grid">
+                            <div class="stat-item">
+                                <span>12 мм</span> <label>Киль</label>
+                            </div>
+                            <div class="stat-item">
+                                <span>АМГ5М</span> <label>Сплав</label>
+                            </div>
+                        </div>
+
+                        <a href="#" class="btn btn-secondary">Технологии верфи</a>
+                    </div>
+                </div>
             </div>
-            <div>
-              <div class="spec-label">Материал</div>
-              <div class="spec-value">морской алюминий</div>
+        </section>
+
+        <!-- GEOGRAPHY MAP -->
+        <section id="geography_map" class="section">
+            <div class="container">
+                <span class="mono">// EXPLORER</span>
+                <h2>Ваша география не ограничена</h2>
+                <p style="margin: 0 auto;">
+                    От шлюзов Москвы до штормов Ладоги и экспедиций на Байкал.
+                    Автономность до 1200 км открывает маршруты, недоступные для большинства яхт.
+                </p>
+
+                <div class="map-interface">
+                    <div class="map-point" style="top: 40%; left: 45%;" data-label="Москва"></div>
+                    <div class="map-point" style="top: 30%; left: 48%;" data-label="Волга"></div>
+                    <div class="map-point" style="top: 20%; left: 40%;" data-label="Ладога"></div>
+                    <div class="map-point" style="top: 50%; left: 80%;" data-label="Байкал"></div>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <a href="#" class="btn btn-secondary">Истории маршрутов</a>
+                </div>
             </div>
-            <div>
-              <div class="spec-label">Статус</div>
-              <div class="spec-value">готовы к сделке</div>
-            </div>
-          </div>
-        </div>
-        <div class="hero-footer">
-          <span>Далее — новая платформа T-Rex Egoist / Family / Specialist.</span>
-          <div class="badge">
-            <div class="badge-dot"></div>
-            Тест-драйв на Волге
-          </div>
-        </div>
-      </aside>
+        </section>
     </main>
 
-    <footer>
-      <span>© KARTEL Boats, 2025. Все права защищены.</span>
-      <span>Сделано на GitHub Pages · код проекта — kartelboats-site</span>
+    <!-- FOOTER CTA -->
+    <footer id="footer_cta">
+        <div class="container">
+            <div class="footer-cta-block">
+                <h2>Начните свой маршрут</h2>
+                <p style="margin: 0 auto 32px auto;">Офис в Москве, верфь в Саратове. Тест-драйвы и осмотр корпуса по записи.</p>
+                <a href="#" class="btn btn-primary">Записаться на тест-драйв</a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#">Контакты</a>
+                <a href="#">О верфи</a>
+                <a href="#">Модельный ряд</a>
+            </div>
+            <div class="mono" style="margin-top: 32px; color: #333;">© 2025 KARTEL BOATS</div>
+        </div>
     </footer>
-  </div>
+
 </body>
 </html>
