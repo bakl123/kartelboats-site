@@ -378,8 +378,31 @@
         
         .card:hover .card-bg { opacity: 0.5; transform: scale(1.02); }
 
-        .bg-flybridge { background: linear-gradient(to bottom, #2b2b2b, #000); }
-        .bg-cruiser { background: linear-gradient(to top right, #1a2a3a, #000); }
+        /* UPDATED CARD BACKGROUNDS WITH REAL IMAGES */
+        .bg-flybridge { 
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15)),
+                url('t-rex-flybridge-card.jpg'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+        
+        .bg-cruiser { 
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15)),
+                url('t-rex-cruiser-card.jpg'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+        
         .bg-concept { background: repeating-linear-gradient(45deg, #111, #111 10px, #222 10px, #222 20px); }
 
         .card-content {
