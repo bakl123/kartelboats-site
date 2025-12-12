@@ -182,29 +182,19 @@
             overflow: hidden;
         }
 
-        #hero_video::before {
-            content: '';
+        /* Removed #hero_video::before overlay as requested */
+
+        .video-placeholder {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: 
-                linear-gradient(rgba(206, 254, 70, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(206, 254, 70, 0.05) 1px, transparent 1px);
-            background-size: 100px 100px;
-            pointer-events: none;
-            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('hero-t-rex.jpg') center center / cover no-repeat;
+            opacity: 0.7; /* можно потом поиграть: 0.5–0.9 */
         }
-
-.video-placeholder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('hero-t-rex.jpg') center center / cover no-repeat;
-    opacity: 0.7; /* можно потом поиграть: 0.5–0.9 */
-}
-
-        }
+        
+        /* Removed stray curly brace here */
 
         .hero-content {
             position: relative;
