@@ -125,33 +125,46 @@
             color: var(--accent);
         }
 
+        /* HEADER UPDATED: Semi-transparent gradient background */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.95),
+                rgba(0, 0, 0, 0.60)
+            );
             backdrop-filter: blur(10px);
             border-bottom: var(--border-thin);
         }
 
+        /* UPDATED NAV CONTAINER: Reduced visual height */
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            min-height: 72px;   /* Comfortable desktop height */
+            padding: 4px 20px;  /* Reduced vertical padding */
         }
 
+        /* LOGO STYLES */
         .logo {
-            font-size: 18px;
-            font-weight: 900;
-            letter-spacing: 0.2em;
-            color: var(--text-main);
-            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0;
+            margin: 0;
         }
         
-        .logo span { color: var(--accent); }
+        /* LOGO SIZE (KEPT LARGE) */
+        .logo-mark {
+            display: block;
+            height: 104px; /* Large desktop size */
+            width: auto;
+        }
 
         .nav-links {
             display: flex;
@@ -446,9 +459,12 @@
         .footer-links a { color: var(--text-muted); text-decoration: none; }
         .footer-links a:hover { color: var(--accent); }
 
-        @media (max-width: 768px) {
+        /* UPDATED MOBILE MEDIA QUERY */
+        @media (max-width: 767px) {
             .nav-container {
                 gap: 12px;
+                min-height: 60px; /* Reduced mobile height */
+                padding: 4px 16px;
             }
             .nav-links {
                 gap: 8px;
@@ -460,6 +476,11 @@
             .section {
                 padding: 80px 0;
             }
+            
+            /* Mobile logo adjustment */
+            .logo-mark {
+                height: 48px; /* Final mobile size */
+            }
         }
     </style>
 </head>
@@ -467,7 +488,9 @@
 
     <header>
         <div class="container nav-container">
-            <div class="logo">KARTEL <span>BOATS</span></div>
+            <a href="#" class="logo">
+                <img src="logo-kartel-boats.svg" alt="KARTEL Boats" class="logo-mark">
+            </a>
             <div class="nav-links">
                 <a href="#lineup_selector" class="nav-link">Модели</a>
                 <a href="#engineering_dna" class="nav-link">Технологии</a>
