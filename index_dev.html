@@ -492,23 +492,29 @@
             text-align: center;
         }
 
+        /* MAP INTERFACE UPDATED: Real map background */
         .map-interface {
             margin-top: 60px;
-            height: 400px;
-            background: #0f0f0f;
+            height: 420px;
             border: var(--border-thin);
             position: relative;
-            background-image: radial-gradient(#333 1px, transparent 1px);
-            background-size: 40px 40px;
+            overflow: hidden;
+            background-image: 
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.85)),
+                url('kartel-explorer-map.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
+        /* MAP POINTS UPDATED: Neon glow */
         .map-point {
             position: absolute;
             width: 12px;
             height: 12px;
             background-color: var(--accent);
             border-radius: 50%;
-            box-shadow: 0 0 15px var(--accent);
+            box-shadow: 0 0 16px rgba(206, 254, 70, 0.9);
             cursor: pointer;
         }
 
