@@ -125,7 +125,7 @@
             color: var(--accent);
         }
 
-        /* HEADER UPDATED: Solid background for clean look */
+        /* HEADER UPDATED: Solid background, fixed height */
         header {
             position: fixed;
             top: 0;
@@ -141,10 +141,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 80px; /* Fixed desktop height */
+            padding: 0 20px;
         }
 
-        /* LOGO STYLES CLEANED UP */
+        /* LOGO STYLES FINAL */
         .logo {
             display: inline-flex;
             align-items: center;
@@ -155,7 +156,7 @@
         
         .logo-mark {
             display: block;
-            height: 56px; /* Large clean logo */
+            height: 64px; /* Final desktop size */
             width: auto;
         }
 
@@ -455,6 +456,7 @@
         @media (max-width: 768px) {
             .nav-container {
                 gap: 12px;
+                height: 64px; /* Adjusted mobile height */
             }
             .nav-links {
                 gap: 8px;
@@ -469,7 +471,7 @@
             
             /* Mobile logo adjustment */
             .logo-mark {
-                height: 36px;
+                height: 40px;
             }
         }
     </style>
