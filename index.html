@@ -204,6 +204,28 @@
             overflow: hidden;
         }
 
+        /* HERO LAYERING & OVERLAY STYLES */
+        .hero-bg-layer {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        /* HERO OVERLAY UPDATED: Lighter gradient */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(
+                circle at top,
+                rgba(0, 0, 0, 0.03) 0%,
+                rgba(0, 0, 0, 0.18) 55%,
+                rgba(0, 0, 0, 0.35) 100%
+            );
+            z-index: 1;
+        }
+
         /* HERO SLIDER STYLES */
         .hero-slider {
             position: absolute;
@@ -241,7 +263,7 @@
             animation-delay: 10s;
         }
 
-        /* Dark overlay for readability */
+        /* Keeping the subtle darken overlay on slider itself as fallback/base */
         .hero-slider::after {
             content: '';
             position: absolute;
@@ -260,7 +282,7 @@
 
         .hero-content {
             position: relative;
-            z-index: 10; /* Ensure content is above slider */
+            z-index: 2; /* Ensure content is above overlay */
             text-align: center;
             padding: 0 20px;
         }
@@ -271,6 +293,39 @@
             font-size: 14px;
             letter-spacing: 0.1em;
             text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        /* NEW HERO TEXT & BUTTON STYLES */
+        .hero-lead {
+            margin: 0 auto 40px auto;
+            max-width: 700px;
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-actions {
+                justify-content: center; /* Center on desktop too for hero balance */
+            }
+        }
+
+        .hero-cta-secondary {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+        
+        .hero-cta-secondary:hover {
+            border-color: var(--accent);
             color: var(--accent);
         }
 
@@ -515,22 +570,31 @@
     </header>
 
     <main>
-        <!-- HERO VIDEO BLOCK (NOW SLIDER) -->
+        <!-- HERO VIDEO BLOCK (UPDATED) -->
         <section id="hero_video">
-            <div class="hero-slider">
-                <div class="slide slide-1"></div>
-                <div class="slide slide-2"></div>
-                <div class="slide slide-3"></div>
+            <!-- Background Layer with Slider -->
+            <div class="hero-bg-layer">
+                <div class="hero-slider">
+                    <div class="slide slide-1"></div>
+                    <div class="slide slide-2"></div>
+                    <div class="slide slide-3"></div>
+                </div>
             </div>
+            
+            <!-- Dark Overlay for Readability -->
+            <div class="hero-overlay"></div>
+
             <div class="container hero-content">
                 <span class="hero-sub mono">T-Rex · Aluminum Expedition Yachts</span>
                 <h1>Право на свободу<br>маршрута</h1>
-                <p style="margin: 0 auto;">
-                    Премиальные алюминиевые катера KARTEL Boats линейки T-Rex.
-                    Сделаны на Волге, настроены под дальние маршруты и тяжёлую воду.
+                
+                <p class="hero-lead">
+                    Премиальные алюминиевые катера KARTEL Boats линейки T-Rex. Сделаны на Волге, настроены под дальние маршруты и тяжёлую воду.
                 </p>
-                <div style="margin-top: 40px;">
+                
+                <div class="hero-actions">
                     <a href="#lineup_selector" class="btn btn-primary">Выбрать T-Rex</a>
+                    <a href="#footer_cta" class="btn btn-secondary hero-cta-secondary">Тест-драйв</a>
                 </div>
             </div>
         </section>
