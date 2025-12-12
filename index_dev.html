@@ -137,13 +137,13 @@
             border-bottom: var(--border-thin);
         }
 
-        /* UPDATED NAV CONTAINER HEIGHT */
+        /* UPDATED NAV CONTAINER: Compact height with padding */
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 104px; /* Fixed desktop height for large logo */
-            padding: 0 20px;
+            min-height: 80px; /* Reduced visual height */
+            padding: 8px 20px;
         }
 
         /* LOGO STYLES */
@@ -155,10 +155,10 @@
             margin: 0;
         }
         
-        /* UPDATED LOGO SIZE */
+        /* UPDATED LOGO SIZE: Larger */
         .logo-mark {
             display: block;
-            height: 96px; /* Final desktop size */
+            height: 104px; /* Final large desktop size */
             width: auto;
         }
 
@@ -459,7 +459,8 @@
         @media (max-width: 767px) {
             .nav-container {
                 gap: 12px;
-                height: 72px; /* Adjusted mobile height for large logo */
+                min-height: 64px; /* Compact mobile height */
+                padding: 6px 16px;
             }
             .nav-links {
                 gap: 8px;
