@@ -438,9 +438,10 @@
             flex: 1;
         }
 
+        /* UPDATED SPLIT MEDIA FOR VIDEO */
         .split-media {
-            background-color: #111;
-            min-height: 320px;
+            background-color: #000;
+            min-height: 400px;
             position: relative;
             display: flex;
             align-items: center;
@@ -448,11 +449,12 @@
             overflow: hidden;
         }
         
-        .split-media::after {
-            content: "VIDEO: WELDING MACRO";
-            color: #555;
-            font-weight: bold;
-            font-family: sans-serif;
+        .dna-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.95;
         }
 
         .split-content {
@@ -668,11 +670,15 @@
             </div>
         </section>
 
-        <!-- ENGINEERING DNA -->
+        <!-- ENGINEERING DNA (UPDATED WITH VIDEO) -->
         <section id="engineering_dna" class="section">
             <div class="container">
                 <div class="split-screen">
-                    <div class="split-media"></div>
+                    <div class="split-media">
+                        <video class="dna-video" autoplay muted loop playsinline>
+                            <source src="welding-macro.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <div class="split-content">
                         <span class="mono" style="margin-bottom: 16px;">// DNA</span>
                         <h2>Танк во фраке</h2>
