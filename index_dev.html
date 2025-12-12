@@ -212,11 +212,17 @@
             z-index: 0;
         }
 
+        /* HERO OVERLAY UPDATED: Lighter gradient */
         .hero-overlay {
             position: absolute;
             inset: 0;
             pointer-events: none;
-            background: radial-gradient(circle at top, rgba(0, 0, 0, 0.2) 0%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,0.9) 100%);
+            background: radial-gradient(
+                circle at top,
+                rgba(0, 0, 0, 0.03) 0%,
+                rgba(0, 0, 0, 0.18) 55%,
+                rgba(0, 0, 0, 0.35) 100%
+            );
             z-index: 1;
         }
 
