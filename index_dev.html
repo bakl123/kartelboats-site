@@ -166,22 +166,31 @@
             width: auto;
         }
 
+        /* NAVIGATION STYLES UPDATED */
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 24px;
+            font-size: 13px;
+            text-transform: uppercase;
         }
 
         .nav-link {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
             color: var(--text-muted);
             text-decoration: none;
+            letter-spacing: 0.08em;
+            transition: var(--transition);
+            font-weight: 500;
         }
 
         .nav-link:hover {
             color: var(--accent);
+        }
+
+        .nav-cta {
+            margin-left: 16px;
+            padding: 10px 22px;
+            font-size: 12px;
         }
 
         #hero_video {
@@ -466,9 +475,14 @@
                 min-height: 60px; /* Reduced mobile height */
                 padding: 4px 16px;
             }
+            
+            /* Stack navigation or hide on mobile (simple stack for now) */
             .nav-links {
-                gap: 8px;
+                display: none; /* Hide nav links on mobile for simplicity in this iteration */
             }
+            
+            /* Show CTA on mobile if needed, or keep hidden */
+            
             .btn {
                 padding: 10px 18px;
                 font-size: 11px;
@@ -491,11 +505,12 @@
             <a href="#" class="logo">
                 <img src="logo-kartel-boats.svg" alt="KARTEL Boats" class="logo-mark">
             </a>
-            <div class="nav-links">
+            <nav class="nav-links">
                 <a href="#lineup_selector" class="nav-link">Модели</a>
                 <a href="#engineering_dna" class="nav-link">Технологии</a>
-                <a href="#footer_cta" class="btn btn-primary" style="padding:10px 20px;">Тест-драйв</a>
-            </div>
+                <a href="#geography_map" class="nav-link">Маршруты</a>
+                <a href="#footer_cta" class="btn btn-primary nav-cta">Тест-драйв</a>
+            </nav>
         </div>
     </header>
 
