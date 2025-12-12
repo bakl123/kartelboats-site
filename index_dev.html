@@ -125,14 +125,14 @@
             color: var(--accent);
         }
 
-        /* HEADER UPDATED: Stronger background for contrast */
+        /* HEADER UPDATED: Stronger background and contrast */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7));
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.85));
             backdrop-filter: blur(10px);
             border-bottom: var(--border-thin);
         }
@@ -150,10 +150,21 @@
             align-items: center;
             text-decoration: none;
         }
+
+        /* New Logo Badge Container */
+        .logo-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 18px;
+            background: rgba(0, 0, 0, 0.95);
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
         
         .logo-mark {
             display: block;
-            height: 40px; /* Increased size for desktop */
+            height: 52px; /* Increased size for desktop */
             width: auto;
         }
 
@@ -467,7 +478,7 @@
             
             /* Mobile logo adjustment */
             .logo-mark {
-                height: 28px;
+                height: 34px; /* Increased for better visibility on mobile */
             }
         }
     </style>
@@ -477,7 +488,9 @@
     <header>
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="logo-kartel-boats.svg" alt="KARTEL Boats" class="logo-mark">
+                <span class="logo-badge">
+                    <img src="logo-kartel-boats.svg" alt="KARTEL Boats" class="logo-mark">
+                </span>
             </a>
             <div class="nav-links">
                 <a href="#lineup_selector" class="nav-link">Модели</a>
