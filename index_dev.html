@@ -125,7 +125,7 @@
             color: var(--accent);
         }
 
-        /* HEADER UPDATED: Solid background, fixed height */
+        /* HEADER */
         header {
             position: fixed;
             top: 0;
@@ -137,15 +137,16 @@
             border-bottom: var(--border-thin);
         }
 
+        /* UPDATED NAV CONTAINER HEIGHT */
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px; /* Fixed desktop height */
+            height: 104px; /* Fixed desktop height for large logo */
             padding: 0 20px;
         }
 
-        /* LOGO STYLES FINAL */
+        /* LOGO STYLES */
         .logo {
             display: inline-flex;
             align-items: center;
@@ -154,9 +155,10 @@
             margin: 0;
         }
         
+        /* UPDATED LOGO SIZE */
         .logo-mark {
             display: block;
-            height: 64px; /* Final desktop size */
+            height: 96px; /* Final desktop size */
             width: auto;
         }
 
@@ -453,10 +455,11 @@
         .footer-links a { color: var(--text-muted); text-decoration: none; }
         .footer-links a:hover { color: var(--accent); }
 
-        @media (max-width: 768px) {
+        /* UPDATED MOBILE MEDIA QUERY */
+        @media (max-width: 767px) {
             .nav-container {
                 gap: 12px;
-                height: 64px; /* Adjusted mobile height */
+                height: 72px; /* Adjusted mobile height for large logo */
             }
             .nav-links {
                 gap: 8px;
@@ -471,7 +474,7 @@
             
             /* Mobile logo adjustment */
             .logo-mark {
-                height: 40px;
+                height: 48px; /* Final mobile size */
             }
         }
     </style>
