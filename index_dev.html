@@ -125,25 +125,29 @@
             color: var(--accent);
         }
 
-        /* HEADER */
+        /* HEADER UPDATED: Semi-transparent gradient background */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.96);
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.95),
+                rgba(0, 0, 0, 0.60)
+            );
             backdrop-filter: blur(10px);
             border-bottom: var(--border-thin);
         }
 
-        /* UPDATED NAV CONTAINER: Compact height with padding */
+        /* UPDATED NAV CONTAINER: Reduced visual height */
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            min-height: 80px; /* Reduced visual height */
-            padding: 8px 20px;
+            min-height: 72px;   /* Comfortable desktop height */
+            padding: 4px 20px;  /* Reduced vertical padding */
         }
 
         /* LOGO STYLES */
@@ -155,10 +159,10 @@
             margin: 0;
         }
         
-        /* UPDATED LOGO SIZE: Larger */
+        /* LOGO SIZE (KEPT LARGE) */
         .logo-mark {
             display: block;
-            height: 104px; /* Final large desktop size */
+            height: 104px; /* Large desktop size */
             width: auto;
         }
 
@@ -459,8 +463,8 @@
         @media (max-width: 767px) {
             .nav-container {
                 gap: 12px;
-                min-height: 64px; /* Compact mobile height */
-                padding: 6px 16px;
+                min-height: 60px; /* Reduced mobile height */
+                padding: 4px 16px;
             }
             .nav-links {
                 gap: 8px;
