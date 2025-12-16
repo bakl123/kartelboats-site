@@ -438,18 +438,49 @@
 
         .card-large .badge { background-color: var(--accent); color: #000; }
 
-        /* CONCEPT BANNER STYLES */
+        /* CONCEPT BANNER SLIDER STYLES */
+        .concept-ego-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
         .concept-ego-preview {
             margin-top: 32px;
             border: var(--border-thin);
             background-color: #000;
             overflow: hidden;
+            /* Height can be driven by content or fixed/aspect-ratio if needed, letting content drive it for now */
+            position: relative; 
+            min-height: 400px; /* Fallback height to ensure visibility if images load slow */
         }
 
-        .concept-ego-image {
+        .concept-ego-slide {
+            position: absolute;
+            inset: 0;
             width: 100%;
-            display: block;
+            height: 100%;
             object-fit: cover;
+            display: block;
+            opacity: 0;
+            animation: egoFade 15s infinite;
+        }
+
+        .concept-ego-slide:nth-child(1) { animation-delay: 0s; }
+        .concept-ego-slide:nth-child(2) { animation-delay: 5s; }
+        .concept-ego-slide:nth-child(3) { animation-delay: 10s; }
+
+        @keyframes egoFade {
+            0%   { opacity: 0; }
+            8%   { opacity: 1; }
+            33%  { opacity: 1; }
+            41%  { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .concept-ego-slide { animation: none; opacity: 0; }
+            .concept-ego-slide:nth-child(1) { opacity: 1; position: relative; }
         }
 
         /* NEW CONCEPT PLATFORM STYLES */
@@ -762,13 +793,13 @@
                     </a>
                 </div>
 
-                <!-- NEW CONCEPT EGO BANNER -->
+                <!-- NEW CONCEPT EGO BANNER WITH SLIDER -->
                 <div class="concept-ego-preview">
-                    <img 
-                        src="t-rex-ego-concept.jpg" 
-                        alt="T-Rex Ego в движении на воде на закате" 
-                        class="concept-ego-image"
-                    >
+                    <div class="concept-ego-slider">
+                        <img src="t-rex-ego-concept.jpg" alt="T-Rex Ego — кадр 1" class="concept-ego-slide">
+                        <img src="t-rex-ego-concept-2.jpg" alt="T-Rex Ego — кадр 2" class="concept-ego-slide">
+                        <img src="t-rex-ego-concept-3.jpg" alt="T-Rex Ego — кадр 3" class="concept-ego-slide">
+                    </div>
                 </div>
 
                 <!-- NEW CONCEPT PLATFORM BLOCK -->
