@@ -507,7 +507,54 @@
             background-repeat: no-repeat;
         }
 
-        /* Points removed as requested */
+        /* ROUTE STORIES STYLES */
+        .route-stories {
+            margin-top: 48px;
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1fr;
+            text-align: left;
+        }
+
+        @media (min-width: 900px) {
+            .route-stories {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .route-card {
+            background-color: var(--bg-card);
+            border: var(--border-thin);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .route-meta {
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+        }
+
+        .route-card h3 {
+            margin-bottom: 4px;
+            font-size: 18px;
+        }
+
+        .route-card p {
+            max-width: 100%;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .route-video {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #333;
+            background-color: #000;
+            aspect-ratio: 16 / 9;
+        }
 
         footer {
             padding: 80px 0 40px;
@@ -687,7 +734,7 @@
             </div>
         </section>
 
-        <!-- GEOGRAPHY MAP (CLEANED) -->
+        <!-- GEOGRAPHY MAP (CLEANED + VIDEOS) -->
         <section id="geography_map" class="section">
             <div class="container">
                 <span class="mono">// EXPLORER</span>
@@ -702,7 +749,30 @@
                 </div>
 
                 <div style="margin-top: 40px;">
-                    <a href="#" class="btn btn-secondary">Истории маршрутов</a>
+                    <a href="#route_stories" class="btn btn-secondary">Истории маршрутов</a>
+                </div>
+
+                <!-- NEW ROUTE STORIES BLOCK -->
+                <div id="route_stories" class="route-stories">
+                    <div class="route-card">
+                        <div class="route-meta mono">// СИБИРСКИЙ МАРШРУТ</div>
+                        <h3>Маршрут «Сибирский исследователь»</h3>
+                        <p>Экспедиционный корпус, построенный для географического общества. Холодная вода, длинные переходы и режим, где важны запас прочности, автономность и доверие к железу.</p>
+                        <video class="route-video" controls preload="none">
+                            <source src="route-siberian-explorer.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает воспроизведение видео.
+                        </video>
+                    </div>
+
+                    <div class="route-card">
+                        <div class="route-meta mono">// МАРШРУТ НА ВОЛГЕ</div>
+                        <h3>Маршрут «T-Rex на Волге»</h3>
+                        <p>Частный T-Rex на своей домашней акватории. Маршрут, где Волга превращается в личную трассу: быстрые переходы, стоянки в тихих бухтах и жизнь на борту вместо берега.</p>
+                        <video class="route-video" controls preload="none">
+                            <source src="route-trex-volga.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает воспроизведение видео.
+                        </video>
+                    </div>
                 </div>
             </div>
         </section>
