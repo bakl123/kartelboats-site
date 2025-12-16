@@ -438,6 +438,20 @@
 
         .card-large .badge { background-color: var(--accent); color: #000; }
 
+        /* CONCEPT BANNER STYLES */
+        .concept-ego-preview {
+            margin-top: 32px;
+            border: var(--border-thin);
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        .concept-ego-image {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
         .split-screen {
             display: flex;
             flex-direction: column;
@@ -704,13 +718,22 @@
                             <span class="badge" style="border-color: #555; background: #222; color: #fff;">Concept</span>
                             <div style="display:flex; justify-content:space-between; align-items:end; flex-wrap:wrap;">
                                 <div>
-                                    <h3>Платформа T-Rex 2026</h3>
+                                    <h3 class="model-label">Платформа T-Rex 2026</h3>
                                     <p style="font-size: 14px;">Egoist / Family / Specialist — будущая серия.</p>
                                 </div>
                                 <span class="mono">Future Series →</span>
                             </div>
                         </div>
                     </a>
+                </div>
+
+                <!-- NEW CONCEPT EGO BANNER -->
+                <div class="concept-ego-preview">
+                    <img 
+                        src="t-rex-ego-concept.jpg" 
+                        alt="T-Rex Ego в движении на воде на закате" 
+                        class="concept-ego-image"
+                    >
                 </div>
             </div>
         </section>
