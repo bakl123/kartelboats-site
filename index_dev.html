@@ -452,6 +452,55 @@
             object-fit: cover;
         }
 
+        /* NEW CONCEPT PLATFORM STYLES */
+        .concept-platform {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: var(--border-thin);
+        }
+
+        .concept-platform > p {
+            margin-top: 8px;
+            margin-bottom: 20px;
+            max-width: 640px;
+        }
+
+        .concept-grid {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 900px) {
+            .concept-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .concept-card {
+            background-color: var(--bg-card);
+            border: var(--border-thin);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .concept-card h3 {
+            margin-bottom: 4px;
+        }
+
+        .concept-card p {
+            max-width: 100%;
+        }
+
+        .badge-concept {
+            background-color: rgba(206, 254, 70, 0.06);
+            border-color: rgba(206, 254, 70, 0.3);
+            color: var(--accent);
+            width: fit-content;
+        }
+
         .split-screen {
             display: flex;
             flex-direction: column;
@@ -711,20 +760,6 @@
                             <p>Всепогодный алюминиевый перехватчик с закрытым контуром безопасности.</p>
                         </div>
                     </a>
-
-                    <a href="#" class="card card-small">
-                        <div class="card-bg bg-concept"></div>
-                        <div class="card-content" style="width: 100%;">
-                            <span class="badge" style="border-color: #555; background: #222; color: #fff;">Concept</span>
-                            <div style="display:flex; justify-content:space-between; align-items:end; flex-wrap:wrap;">
-                                <div>
-                                    <h3 class="model-label">Платформа T-Rex 2026</h3>
-                                    <p style="font-size: 14px;">Egoist / Family / Specialist — будущая серия.</p>
-                                </div>
-                                <span class="mono">Future Series →</span>
-                            </div>
-                        </div>
-                    </a>
                 </div>
 
                 <!-- NEW CONCEPT EGO BANNER -->
@@ -734,6 +769,32 @@
                         alt="T-Rex Ego в движении на воде на закате" 
                         class="concept-ego-image"
                     >
+                </div>
+
+                <!-- NEW CONCEPT PLATFORM BLOCK -->
+                <div class="concept-platform">
+                    <div class="mono">// Платформа T-Rex 2026</div>
+                    <p>Единый алюминиевый корпус и три направления: Egoist, Family и Specialist — одна платформа, три сценария использования.</p>
+
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <span class="badge badge-concept">Egoist</span>
+                            <h3>T-Rex Egoist</h3>
+                            <p>Для драйва, скорости и личной свободы владельца.</p>
+                        </div>
+
+                        <div class="concept-card">
+                            <span class="badge badge-concept">Family</span>
+                            <h3>T-Rex Family</h3>
+                            <p>Для безопасных семейных маршрутов, детей и долгих стоянок на воде.</p>
+                        </div>
+
+                        <div class="concept-card">
+                            <span class="badge badge-concept">Specialist</span>
+                            <h3>T-Rex Specialist</h3>
+                            <p>Рабочий инструмент для служб, спасателей и профессиональных задач в тяжёлых условиях.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
