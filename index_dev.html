@@ -422,6 +422,20 @@
             border: 1px solid rgba(206, 254, 70, 0.2);
         }
 
+        /* NEW STYLE FOR MODEL LABELS (PILL TABS) */
+        .model-label {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: #b36bff; /* Specific violet color requested */
+            color: #000000;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-radius: 999px;
+            margin-bottom: 12px;
+        }
+
         .card-large .badge { background-color: var(--accent); color: #000; }
 
         .split-screen {
@@ -670,7 +684,7 @@
                         <div class="card-bg bg-flybridge"></div>
                         <div class="card-content">
                             <span class="badge">Корпус в наличии</span>
-                            <h3>T-Rex Flybridge</h3>
+                            <h3 class="model-label">T-Rex Flybridge</h3>
                             <p style="color: #ccc;">Для тех, кто любит идти выше горизонта: верхняя палуба, панорамные виды и свобода движения на стоянке и в походе.</p>
                         </div>
                     </a>
@@ -679,7 +693,7 @@
                         <div class="card-bg bg-cruiser"></div>
                         <div class="card-content">
                             <span class="badge">Готов к тесту</span>
-                            <h3>T-Rex Cruiser</h3>
+                            <h3 class="model-label">T-Rex Cruiser</h3>
                             <p>Всепогодный алюминиевый перехватчик с закрытым контуром безопасности.</p>
                         </div>
                     </a>
