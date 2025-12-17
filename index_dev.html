@@ -853,12 +853,20 @@
             gap: 12px;
             grid-template-columns: repeat(3, 1fr);
         }
-        .gph{
-            aspect-ratio: 4 / 3;
+        
+        .modal__thumb{
+            width:100%;
+            aspect-ratio:4/3;
+            object-fit:cover;
+            display:block;
             border: var(--border-thin);
-            background:
-                linear-gradient(135deg, rgba(206,254,70,0.06), rgba(0,0,0,0)),
-                linear-gradient(180deg, #121212, #060606);
+            background:#000;
+            transition: var(--transition);
+        }
+
+        .modal__thumb:hover{
+            border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         .modal__block{ margin-bottom: 16px; }
@@ -1131,13 +1139,12 @@
             <div class="modal__grid">
                 <div class="modal__media">
                     <div class="modal__gallery">
-                        <!-- Пока плейсхолдеры. Позже заменим на реальные фото -->
-                        <div class="gph"></div>
-                        <div class="gph"></div>
-                        <div class="gph"></div>
-                        <div class="gph"></div>
-                        <div class="gph"></div>
-                        <div class="gph"></div>
+                        <img class="modal__thumb" src="T-Rex44Cruiser_salon_goldenhour_06_4K.jpg" alt="Салон: панорамный свет, тёплый маршрут">
+                        <img class="modal__thumb" src="T-Rex44_salon_helm_warm-route_07_4K.jpg" alt="Пост управления: навигация и контроль">
+                        <img class="modal__thumb" src="T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Нижняя каюта: уют и тишина">
+                        <img class="modal__thumb" src="T-Rex44_guest_bathroom_spa-details_02_4K.jpg" alt="Санузел: детали и материалы">
+                        <img class="modal__thumb" src="T-Rex44Cruiser_shower_zone_12_4K.jpg" alt="Душевая зона: камень, металл, тепло">
+                        <img class="modal__thumb" src="T-Rex44Cruiser_engine-room_clean_13_4K.jpg" alt="Техотсек: аккуратная силовая сборка">
                     </div>
                     <div class="mono" style="margin-top:12px; color:#666;">// interior / details / production</div>
                 </div>
