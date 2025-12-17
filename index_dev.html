@@ -978,6 +978,27 @@
             flex-wrap: wrap;
             margin-top: 18px;
         }
+
+        /* NEW SPECS LIST STYLE */
+        .spec-list {
+            list-style: none;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #aaa;
+        }
+        .spec-list li {
+            margin-bottom: 8px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .spec-list li strong { 
+            color: #fff; 
+            margin-right: 8px; 
+        }
     </style>
 </head>
 <body>
@@ -1037,7 +1058,7 @@
                 </p>
                 
                 <div class="bento-grid">
-                    <a href="#" class="card card-large">
+                    <a href="#flybridge_modal" class="card card-large">
                         <div class="card-bg bg-flybridge"></div>
                         <div class="card-content">
                             <span class="badge">Корпус в наличии</span>
@@ -1296,6 +1317,72 @@
         </div>
     </div>
 
+    <!-- FLYBRIDGE MODAL -->
+    <div id="flybridge_modal" class="modal">
+        <a href="#lineup_selector" class="modal__overlay" aria-label="Закрыть"></a>
+
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="T-Rex 44 Flybridge">
+            <div class="modal__header">
+                <div class="mono">// MODEL OVERVIEW</div>
+                <a href="#lineup_selector" class="modal__close" aria-label="Закрыть">✕</a>
+            </div>
+
+            <h2>T-Rex 44 Flybridge</h2>
+            <p>Броня снаружи, люкс внутри. Флагман экспедиционной серии с верхней палубой для полного контроля над горизонтом.</p>
+
+            <div class="modal__grid">
+                <!-- Gallery Column -->
+                <div class="modal__media">
+                    <div class="modal__gallery">
+                        <a href="#flybridge_img1" class="modal__thumbLink"><img class="modal__thumb" src="images/flybridge/T-Rex44Fly_FRONT_RUNNING_LUX.jpg" alt="Front Running"></a>
+                        <a href="#flybridge_img2" class="modal__thumbLink"><img class="modal__thumb" src="images/flybridge/T-Rex44Fly_01_STERN_LUX_MARINA_16x9_4K.jpg" alt="Stern Marina"></a>
+                        <a href="#flybridge_img3" class="modal__thumbLink"><img class="modal__thumb" src="images/flybridge/T-Rex44Fly_04_GOLDEN_STORM_CHARGE.jpg" alt="Storm Charge"></a>
+                        <a href="#flybridge_img4" class="modal__thumbLink"><img class="modal__thumb" src="images/flybridge/T-Rex44_master-cabin_boutique-suite_03_4K.jpg" alt="Master Cabin"></a>
+                        <a href="#flybridge_img5" class="modal__thumbLink"><img class="modal__thumb" src="images/flybridge/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Lower Cabin"></a>
+                        <a href="#flybridge_img6" class="modal__thumbLink"><img class="modal__thumb" src="images/flybridge/T-Rex44_bathroom_shower-comfort_01_4K.jpg" alt="Bathroom"></a>
+                    </div>
+                    <div class="mono" style="margin-top:12px; color:#666;">// Exterior / Interior</div>
+                </div>
+
+                <!-- Text/Specs Column -->
+                <div class="modal__content">
+                    
+                    <div class="modal__block">
+                        <div class="mono" style="margin-bottom: 8px;">// ТТХ: Военная спецификация</div>
+                        <ul class="spec-list">
+                            <li>
+                                <strong>Габариты:</strong> 13.3 × 3.67 м | Осадка 0.8 м
+                            </li>
+                            <li>
+                                <strong>Броня (АМГ5М):</strong> Киль 12мм, Днище 6мм, Борт 5мм, Транец 16мм
+                            </li>
+                            <li>
+                                <strong>Вместимость:</strong> 12 человек | Спальных мест: 6 (2 каюты)
+                            </li>
+                            <li>
+                                <strong>Автономность:</strong> Топливо 1200л | Вода 250л | Генератор 5кВт
+                            </li>
+                            <li>
+                                <strong>Комфорт:</strong> 2 гальюна + душ, Полная кухня, Бойлер 30л, Отопитель 8кВт
+                            </li>
+                            <li>
+                                <strong>Флайбридж:</strong> Второй пост / Солярий / Платформа для солнечных панелей
+                            </li>
+                            <li style="border-bottom: none;">
+                                <strong>Мощность:</strong> Подвесные двигатели суммарно до 1200 л.с.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-top: 24px;">
+                        <a href="#testdrive_modal" class="btn btn-primary" style="width: 100%;">Запросить стоимость</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- LIGHTBOX MODALS FOR SHIPYARD IMAGES -->
     <div id="shipyard_img_1" class="modal modal--media">
         <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
@@ -1342,6 +1429,50 @@
         <div class="modal__dialog modal__dialog--media">
             <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
             <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_engine-room_clean_13_4K.jpg" alt="Техотсек: аккуратная силовая сборка">
+        </div>
+    </div>
+
+    <!-- LIGHTBOX MODALS FOR FLYBRIDGE IMAGES -->
+    <div id="flybridge_img1" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44Fly_FRONT_RUNNING_LUX.jpg" alt="Front Running">
+        </div>
+    </div>
+    <div id="flybridge_img2" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44Fly_01_STERN_LUX_MARINA_16x9_4K.jpg" alt="Stern Marina">
+        </div>
+    </div>
+    <div id="flybridge_img3" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44Fly_04_GOLDEN_STORM_CHARGE.jpg" alt="Storm Charge">
+        </div>
+    </div>
+    <div id="flybridge_img4" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44_master-cabin_boutique-suite_03_4K.jpg" alt="Master Cabin">
+        </div>
+    </div>
+    <div id="flybridge_img5" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Lower Cabin">
+        </div>
+    </div>
+    <div id="flybridge_img6" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44_bathroom_shower-comfort_01_4K.jpg" alt="Bathroom">
         </div>
     </div>
 
