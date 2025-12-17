@@ -1118,7 +1118,7 @@
                         </div>
                     </a>
 
-                    <a href="#" class="card card-medium">
+                    <a href="#cruiser_modal" class="card card-medium">
                         <div class="card-bg bg-cruiser"></div>
                         <div class="card-content">
                             <span class="badge">Готов к тесту</span>
@@ -1434,6 +1434,65 @@
         </div>
     </div>
 
+    <!-- CRUISER MODAL -->
+    <div id="cruiser_modal" class="modal">
+        <a href="#lineup_selector" class="modal__overlay" aria-label="Закрыть"></a>
+
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="T-Rex 44 Cruiser">
+            <div class="modal__header">
+                <div class="mono">// Круизная платформа T-Rex</div>
+                <a href="#lineup_selector" class="modal__close" aria-label="Закрыть">✕</a>
+            </div>
+
+            <h2>T-Rex 44 Cruiser</h2>
+            <p>
+                Мы не полируем пластик — мы строим катера для маршрутов. <br>
+                T-Rex 44 Cruiser создан на базе флагманского корпуса, усилен для тяжелой воды и дальних переходов. <br>
+                Морской алюминий АМГ5М, независимое отопление и кондиционирование, три каюты и до 10 спальных мест. <br>
+                Он одинаково уверен в штиле и шторме — универсальный перехватчик для семьи, команды или одиночных путешествий.
+            </p>
+
+            <div class="modal__grid">
+                <!-- Gallery Column -->
+                <div class="modal__media">
+                    <div class="modal__gallery">
+                        <a href="#cruiser_img1" class="modal__thumbLink"><img class="modal__thumb" src="images/cruiser/TRex44CR_01_Aft_Terrace_Sunset.jpg" alt="Aft Terrace"></a>
+                        <a href="#cruiser_img2" class="modal__thumbLink"><img class="modal__thumb" src="images/cruiser/TRex44CR_02_Marina_Lounge.jpg" alt="Marina Lounge"></a>
+                        <a href="#cruiser_img3" class="modal__thumbLink"><img class="modal__thumb" src="images/cruiser/T-Rex44Cruiser_cockpit_river-view_03_4K.jpg" alt="Cockpit View"></a>
+                        <a href="#cruiser_img4" class="modal__thumbLink"><img class="modal__thumb" src="images/cruiser/T-Rex44Cruiser_mastercabin_evening_05_4K.jpg" alt="Master Cabin"></a>
+                        <a href="#cruiser_img5" class="modal__thumbLink"><img class="modal__thumb" src="images/cruiser/T-Rex44Cruiser_bathroom_portlights_09_4K.jpg" alt="Bathroom"></a>
+                        <a href="#cruiser_img6" class="modal__thumbLink"><img class="modal__thumb" src="images/cruiser/TRex44CR_07_Stealth_Storm_Run.jpg" alt="Storm Run"></a>
+                    </div>
+                    <div class="mono" style="margin-top:12px; color:#666;">// Exterior / Interior</div>
+                </div>
+
+                <!-- Text/Specs Column -->
+                <div class="modal__content">
+                    
+                    <div class="modal__block">
+                        <div class="mono" style="margin-bottom: 8px;">// ТТХ: Крейсерская спецификация</div>
+                        <ul class="spec-list">
+                            <li><strong>Корпус:</strong> морской алюминий АМГ5М</li>
+                            <li><strong>Толщина:</strong> 12 / 6 / 5 / 4 / 16 мм (киль/днище/борт/рубка/транец)</li>
+                            <li><strong>Мощность:</strong> 500–1050 л.с. (рек. 600–700)</li>
+                            <li><strong>Габариты:</strong> 13.3 × 3.5 м | Осадка 0.55–0.75 м | Вес 8 т</li>
+                            <li><strong>Вместимость:</strong> 12 человек | Каюты: 3 | Спальных мест: 10</li>
+                            <li><strong>Скорость:</strong> ~50 км/ч (крейсерская) | ~85 км/ч (макс)</li>
+                            <li><strong>Автономность:</strong> Топливо 2×400л | Генератор 5кВт | Солнечная батарея 360Вт</li>
+                            <li><strong>Климат:</strong> Отопление 8кВт (жидкостное) | Кондиционер 37 000 BTU</li>
+                            <li style="border-bottom: none;"><strong>Оборудование:</strong> Vetus, Osculati, Mastervolt, Victron, Dometic, Webasto, Quick</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-top: 24px;">
+                        <a href="#testdrive_modal" class="btn btn-primary" style="width: 100%;">Запросить стоимость</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- LIGHTBOX MODALS FOR SHIPYARD IMAGES -->
     <div id="shipyard_img_1" class="modal modal--media">
         <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
@@ -1548,6 +1607,62 @@
             <a href="#flybridge_img5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/flybridge/T-Rex44_bathroom_shower-comfort_01_4K.jpg" alt="Bathroom">
             <a href="#flybridge_img1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX MODALS FOR CRUISER IMAGES -->
+    <div id="cruiser_img1" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/TRex44CR_01_Aft_Terrace_Sunset.jpg" alt="Aft Terrace">
+            <a href="#cruiser_img2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="cruiser_img2" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/TRex44CR_02_Marina_Lounge.jpg" alt="Marina Lounge">
+            <a href="#cruiser_img3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="cruiser_img3" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_cockpit_river-view_03_4K.jpg" alt="Cockpit View">
+            <a href="#cruiser_img4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="cruiser_img4" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_mastercabin_evening_05_4K.jpg" alt="Master Cabin">
+            <a href="#cruiser_img5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="cruiser_img5" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_bathroom_portlights_09_4K.jpg" alt="Bathroom">
+            <a href="#cruiser_img6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="cruiser_img6" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/TRex44CR_07_Stealth_Storm_Run.jpg" alt="Storm Run">
+            <a href="#cruiser_img1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
 
