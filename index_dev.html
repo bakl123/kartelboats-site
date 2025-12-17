@@ -909,6 +909,75 @@
             background: rgba(0,0,0,0.8);
             border-color: #444;
         }
+
+        /* show modal when anchor is targeted */
+        #testdrive_modal:target ~ .testdrive-modal { display: block; }
+
+        /* Form styles */
+        .kb-form{ margin-top: 18px; }
+
+        .kb-grid{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-top: 14px;
+        }
+        @media (min-width: 900px){
+            .kb-grid{ grid-template-columns: 1fr 1fr; gap: 16px; }
+            .kb-span-2{ grid-column: span 2; }
+        }
+
+        .kb-field label{
+            display:block;
+            font-size:12px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            letter-spacing: 0.06em;
+        }
+
+        .kb-field input,
+        .kb-field select{
+            width: 100%;
+            padding: 14px 14px;
+            background: #060606;
+            color: var(--text-main);
+            border: var(--border-thin);
+            outline: none;
+            font-size: 14px;
+        }
+
+        .kb-field input:focus,
+        .kb-field select:focus{
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(206,254,70,0.12);
+        }
+
+        .kb-radio{
+            display:flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            padding: 10px 12px;
+            border: var(--border-thin);
+            background: rgba(0,0,0,0.25);
+        }
+
+        .kb-radio label{
+            display:flex;
+            align-items:center;
+            gap: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-main);
+            letter-spacing: 0.04em;
+        }
+
+        .kb-actions{
+            display:flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
     </style>
 </head>
 <body>
@@ -922,7 +991,7 @@
                 <a href="#lineup_selector" class="nav-link">Модели</a>
                 <a href="#engineering_dna" class="nav-link">Технологии</a>
                 <a href="#geography_map" class="nav-link">Маршруты</a>
-                <a href="#footer_cta" class="btn btn-primary nav-cta">Тест-драйв</a>
+                <a href="#testdrive_modal" class="btn btn-primary nav-cta">Тест-драйв</a>
             </nav>
         </div>
     </header>
@@ -1149,7 +1218,7 @@
             <div class="footer-cta-block">
                 <h2>Начните свой маршрут</h2>
                 <p style="margin: 0 auto 32px auto;">Офис в Москве, верфь в Саратове. Тест-драйвы и осмотр корпуса по записи.</p>
-                <a href="#" class="btn btn-primary">Записаться на тест-драйв</a>
+                <a href="#testdrive_modal" class="btn btn-primary">Записаться на тест-драйв</a>
             </div>
             
             <div class="footer-links">
@@ -1160,6 +1229,9 @@
             <div class="mono" style="margin-top: 32px; color: #333;">© 2025 KARTEL BOATS</div>
         </div>
     </footer>
+
+    <!-- ANCHOR FOR TEST DRIVE MODAL -->
+    <a id="testdrive_modal" class="anchor"></a>
 
     <!-- MODAL -->
     <div id="shipyard_modal" class="modal">
@@ -1270,6 +1342,70 @@
         <div class="modal__dialog modal__dialog--media">
             <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
             <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_engine-room_clean_13_4K.jpg" alt="Техотсек: аккуратная силовая сборка">
+        </div>
+    </div>
+
+    <!-- TEST DRIVE MODAL -->
+    <div class="modal testdrive-modal">
+        <a href="#footer_cta" class="modal__overlay" aria-label="Закрыть"></a>
+
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Запрос на тест-драйв">
+            <div class="modal__header">
+                <div class="mono">// TEST DRIVE REQUEST</div>
+                <a href="#footer_cta" class="modal__close" aria-label="Закрыть">✕</a>
+            </div>
+
+            <h2>Запрос на тест-драйв</h2>
+            <p>Оставьте контакты — мы свяжемся и согласуем модель, локацию и удобное время. Быстро. По делу. Без спама.</p>
+
+            <!-- FORM (UI) -->
+            <form class="kb-form" action="https://formsubmit.co/REPLACE_ME" method="POST">
+                <input type="hidden" name="_subject" value="KARTEL | Запрос на тест-драйв">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="kb-grid">
+                    <div class="kb-field">
+                        <label for="kb_phone">Телефон</label>
+                        <input id="kb_phone" name="phone" type="tel" placeholder="+7 ___ ___-__-__" required>
+                    </div>
+
+                    <div class="kb-field">
+                        <label for="kb_email">Email</label>
+                        <input id="kb_email" name="email" type="email" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="kb-field kb-span-2">
+                        <label for="kb_model">Интересующая модель</label>
+                        <select id="kb_model" name="model" required>
+                            <option value="" disabled selected>Выберите модель</option>
+                            <option>T-Rex Flybridge</option>
+                            <option>T-Rex Cruiser</option>
+                            <option>T-Rex Egoist</option>
+                            <option>T-Rex Family</option>
+                            <option>T-Rex Specialist</option>
+                        </select>
+                    </div>
+
+                    <div class="kb-field kb-span-2">
+                        <label>Способ связи</label>
+                        <div class="kb-radio">
+                            <label><input type="radio" name="contact_method" value="Звонок" checked> Звонок</label>
+                            <label><input type="radio" name="contact_method" value="WhatsApp"> WhatsApp</label>
+                            <label><input type="radio" name="contact_method" value="Telegram"> Telegram</label>
+                            <label><input type="radio" name="contact_method" value="Email"> Email</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kb-actions">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                    <a href="#footer_cta" class="btn btn-secondary">Закрыть</a>
+                </div>
+
+                <div class="kb-note mono" style="color:#555; margin-top:14px;">
+                    // Нажимая “Отправить”, вы соглашаетесь на обратную связь от KARTEL Boats.
+                </div>
+            </form>
         </div>
     </div>
 
