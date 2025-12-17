@@ -890,6 +890,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative; /* For absolute children */
         }
         
         .modal__media {
@@ -902,12 +903,62 @@
             background: #000;
         }
         
-        .modal--media .modal__close {
+        .modal__close--media {
             position: absolute;
-            top: -40px;
-            right: 0;
+            top: 16px;
+            right: 16px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid #333;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            transition: 0.3s ease;
+            z-index: 10;
+        }
+        .modal__close--media:hover {
+            border-color: var(--accent);
+            color: var(--accent);
             background: rgba(0,0,0,0.8);
-            border-color: #444;
+        }
+
+        /* MEDIA NAVIGATION ARROWS */
+        .media-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid #333;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+            transition: 0.3s ease;
+            z-index: 10;
+            pointer-events: auto;
+        }
+        .media-nav:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0,0,0,0.8);
+        }
+        .media-nav--prev { left: 16px; }
+        .media-nav--next { right: 16px; }
+
+        @media (max-width: 768px) {
+            .modal__close--media { width: 44px; height: 44px; }
+            .media-nav { width: 44px; height: 44px; }
+            .media-nav--prev { left: 8px; }
+            .media-nav--next { right: 8px; }
         }
 
         /* show modal when anchor is targeted */
@@ -1387,48 +1438,60 @@
     <div id="shipyard_img_1" class="modal modal--media">
         <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_salon_goldenhour_06_4K.jpg" alt="Салон: панорамный свет, тёплый маршрут">
+            <a href="#shipyard_img_2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
 
     <div id="shipyard_img_2" class="modal modal--media">
         <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/shipyard/T-Rex44_salon_helm_warm-route_07_4K.jpg" alt="Пост управления: навигация и контроль">
+            <a href="#shipyard_img_3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
 
     <div id="shipyard_img_3" class="modal modal--media">
         <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/shipyard/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Нижняя каюта: уют и тишина">
+            <a href="#shipyard_img_4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
 
     <div id="shipyard_img_4" class="modal modal--media">
         <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/shipyard/T-Rex44_guest_bathroom_spa-details_02_4K.jpg" alt="Санузел: детали и материалы">
+            <a href="#shipyard_img_5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
 
     <div id="shipyard_img_5" class="modal modal--media">
         <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_shower_zone_12_4K.jpg" alt="Душевая зона: камень, металл, тепло">
+            <a href="#shipyard_img_6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
 
     <div id="shipyard_img_6" class="modal modal--media">
         <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_engine-room_clean_13_4K.jpg" alt="Техотсек: аккуратная силовая сборка">
+            <a href="#shipyard_img_1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
 
@@ -1436,43 +1499,55 @@
     <div id="flybridge_img1" class="modal modal--media">
         <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/flybridge/T-Rex44Fly_FRONT_RUNNING_LUX.jpg" alt="Front Running">
+            <a href="#flybridge_img2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
     <div id="flybridge_img2" class="modal modal--media">
         <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/flybridge/T-Rex44Fly_01_STERN_LUX_MARINA_16x9_4K.jpg" alt="Stern Marina">
+            <a href="#flybridge_img3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
     <div id="flybridge_img3" class="modal modal--media">
         <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/flybridge/T-Rex44Fly_04_GOLDEN_STORM_CHARGE.jpg" alt="Storm Charge">
+            <a href="#flybridge_img4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
     <div id="flybridge_img4" class="modal modal--media">
         <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/flybridge/T-Rex44_master-cabin_boutique-suite_03_4K.jpg" alt="Master Cabin">
+            <a href="#flybridge_img5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
     <div id="flybridge_img5" class="modal modal--media">
         <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/flybridge/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Lower Cabin">
+            <a href="#flybridge_img6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
     <div id="flybridge_img6" class="modal modal--media">
         <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
         <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/flybridge/T-Rex44_bathroom_shower-comfort_01_4K.jpg" alt="Bathroom">
+            <a href="#flybridge_img1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
 
