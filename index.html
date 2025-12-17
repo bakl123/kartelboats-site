@@ -797,6 +797,118 @@
                 height: 48px; /* Final mobile size */
             }
         }
+
+        /* MODAL STYLES */
+        .modal {
+            position: fixed; inset: 0; z-index: 2000;
+            display: none;
+        }
+        .modal:target { display: block; }
+
+        .modal__overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.72);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal__dialog {
+            position: relative;
+            width: min(1080px, calc(100% - 32px));
+            max-height: calc(100% - 48px);
+            margin: 24px auto;
+            background: #0b0b0b;
+            border: var(--border-thin);
+            overflow: auto;
+            padding: 24px;
+        }
+
+        .modal__header{
+            display:flex; align-items:center; justify-content:space-between;
+            margin-bottom: 10px;
+        }
+
+        .modal__close{
+            display:inline-flex; align-items:center; justify-content:center;
+            width: 36px; height: 36px;
+            border: var(--border-thin);
+            color: var(--text-main);
+            text-decoration: none;
+            background: rgba(0,0,0,0.4);
+            transition: var(--transition);
+        }
+        .modal__close:hover { border-color: var(--accent); color: var(--accent); }
+
+        .modal__grid{
+            margin-top: 18px;
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 900px){
+            .modal__grid{ grid-template-columns: 1.05fr 0.95fr; }
+        }
+
+        .modal__gallery{
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .modal__thumb{
+            width:100%;
+            aspect-ratio:4/3;
+            object-fit:cover;
+            display:block;
+            border: var(--border-thin);
+            background:#000;
+            transition: var(--transition);
+        }
+
+        .modal__thumb:hover{
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .modal__thumbLink {
+            display: block;
+            text-decoration: none;
+        }
+
+        .modal__block{ margin-bottom: 16px; }
+        .modal__block p{ max-width: 100%; }
+        
+        /* MEDIA LIGHTBOX STYLES */
+        .modal--media .modal__dialog {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            width: auto;
+            max-width: 1100px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal__media {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border: 1px solid #333;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            background: #000;
+        }
+        
+        .modal--media .modal__close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: rgba(0,0,0,0.8);
+            border-color: #444;
+        }
     </style>
 </head>
 <body>
@@ -981,7 +1093,7 @@
                             </div>
                         </div>
 
-                        <a href="#" class="btn btn-secondary">Технологии верфи</a>
+                        <a href="#shipyard_modal" class="btn btn-secondary">Технологии верфи</a>
                     </div>
                 </div>
             </div>
@@ -1048,6 +1160,118 @@
             <div class="mono" style="margin-top: 32px; color: #333;">© 2025 KARTEL BOATS</div>
         </div>
     </footer>
+
+    <!-- MODAL -->
+    <div id="shipyard_modal" class="modal">
+        <a href="#engineering_dna" class="modal__overlay" aria-label="Закрыть"></a>
+
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Технологии верфи">
+            <div class="modal__header">
+                <div class="mono">// SHIPYARD TECH</div>
+                <a href="#engineering_dna" class="modal__close" aria-label="Закрыть">✕</a>
+            </div>
+
+            <h2>Технологии верфи</h2>
+            <p>Инженерный премиум без глянца. Снаружи — силовая геометрия и тяжёлая вода. Внутри — тишина, тепло и материалы, которые стареют красиво.</p>
+
+            <div class="modal__grid">
+                <div class="modal__media">
+                    <div class="modal__gallery">
+                        <a href="#shipyard_img_1" class="modal__thumbLink">
+                            <img class="modal__thumb" src="images/shipyard/T-Rex44Cruiser_salon_goldenhour_06_4K.jpg" alt="Салон: панорамный свет, тёплый маршрут">
+                        </a>
+                        <a href="#shipyard_img_2" class="modal__thumbLink">
+                            <img class="modal__thumb" src="images/shipyard/T-Rex44_salon_helm_warm-route_07_4K.jpg" alt="Пост управления: навигация и контроль">
+                        </a>
+                        <a href="#shipyard_img_3" class="modal__thumbLink">
+                            <img class="modal__thumb" src="images/shipyard/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Нижняя каюта: уют и тишина">
+                        </a>
+                        <a href="#shipyard_img_4" class="modal__thumbLink">
+                            <img class="modal__thumb" src="images/shipyard/T-Rex44_guest_bathroom_spa-details_02_4K.jpg" alt="Санузел: детали и материалы">
+                        </a>
+                        <a href="#shipyard_img_5" class="modal__thumbLink">
+                            <img class="modal__thumb" src="images/shipyard/T-Rex44Cruiser_shower_zone_12_4K.jpg" alt="Душевая зона: камень, металл, тепло">
+                        </a>
+                        <a href="#shipyard_img_6" class="modal__thumbLink">
+                            <img class="modal__thumb" src="images/shipyard/T-Rex44Cruiser_engine-room_clean_13_4K.jpg" alt="Техотсек: аккуратная силовая сборка">
+                        </a>
+                    </div>
+                    <div class="mono" style="margin-top:12px; color:#666;">// interior / details / production</div>
+                </div>
+
+                <div class="modal__content">
+                    <div class="modal__block">
+                        <div class="mono">// Материалы</div>
+                        <p>Авиационный алюминий и честная сборка. В отделке — натуральные породы дерева (дуб/тик) и тактильные материалы без компромиссов.</p>
+                    </div>
+
+                    <div class="modal__block">
+                        <div class="mono">// Силовая часть</div>
+                        <p>Киль и борт — как у боевого катера. Силовой набор рассчитан на “тяжёлую воду” и дальние переходы, а не на витрину.</p>
+                    </div>
+
+                    <div class="modal__block">
+                        <div class="mono">// Оборудование</div>
+                        <p>Навигация, электрика и комплектующие — от проверенных мировых производителей. Ставим то, что работает в реальных условиях, а не “для галочки”.</p>
+                    </div>
+
+                    <div class="modal__block">
+                        <div class="mono">// Русская душа</div>
+                        <p>Корпус сделан на Волге. Это про характер, про маршрут и про уважение к металлу — спокойно, точно, навсегда.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX MODALS FOR SHIPYARD IMAGES -->
+    <div id="shipyard_img_1" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_salon_goldenhour_06_4K.jpg" alt="Салон: панорамный свет, тёплый маршрут">
+        </div>
+    </div>
+
+    <div id="shipyard_img_2" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44_salon_helm_warm-route_07_4K.jpg" alt="Пост управления: навигация и контроль">
+        </div>
+    </div>
+
+    <div id="shipyard_img_3" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Нижняя каюта: уют и тишина">
+        </div>
+    </div>
+
+    <div id="shipyard_img_4" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44_guest_bathroom_spa-details_02_4K.jpg" alt="Санузел: детали и материалы">
+        </div>
+    </div>
+
+    <div id="shipyard_img_5" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_shower_zone_12_4K.jpg" alt="Душевая зона: камень, металл, тепло">
+        </div>
+    </div>
+
+    <div id="shipyard_img_6" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close" aria-label="Закрыть">✕</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_engine-room_clean_13_4K.jpg" alt="Техотсек: аккуратная силовая сборка">
+        </div>
+    </div>
 
 </body>
 </html>
