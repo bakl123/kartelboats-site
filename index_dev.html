@@ -1066,8 +1066,8 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             transition: var(--transition);
-            margin-top: 16px;
-            width: 100%;
+            /* Removed global width: 100% per request */
+            width: auto; 
         }
 
         .btn-brochure:hover {
@@ -1097,6 +1097,43 @@
             margin-top: 24px;
         }
         
+        /* New Styles for brochure button in gallery */
+        .modal__media-actions{
+          margin-top: 14px;
+          display:flex;
+          justify-content:flex-start;
+        }
+
+        .btn-brochure--gallery{
+          width: auto;                /* НЕ 100% */
+          padding: 12px 18px;
+          border: 1px solid rgba(255,255,255,0.18);
+          background: rgba(0,0,0,0.35);
+        }
+
+        .btn-brochure--gallery:hover{
+          border-color: var(--accent);
+          transform: translateY(-2px);
+        }
+
+        .btn-brochure .pdf-size{
+          margin-left: 10px;
+          color:#888;
+          font-size:11px;
+        }
+        
+        /* ИСПРАВЛЕНО: Кнопка стоимости снова широкая и заметная */
+        .modal__content-actions .btn { 
+            width: 100%; 
+            /* max-width: 420px; */ /* REMOVED LIMIT */
+            justify-content: center;
+        }
+        
+        /* Explicitly target only the primary button in content actions for full width */
+        .modal__content-actions .btn-primary { 
+            width: 100%; 
+        }
+
         /* Mobile adjustment for brochure button */
         @media (min-width: 600px) {
            .btn-brochure {
@@ -1450,6 +1487,12 @@
                         <a href="#flybridge_img6" class="modal__thumbLink"><img class="modal__thumb" src="images/flybridge/T-Rex44_bathroom_shower-comfort_01_4K.jpg" alt="Bathroom"></a>
                     </div>
                     <div class="mono" style="margin-top:12px; color:#666;">// Exterior / Interior</div>
+                    
+                    <div class="modal__media-actions">
+                        <a href="assets/brochures/flybridge/t-rex-fly-44.pdf" target="_blank" rel="noopener" class="btn-brochure btn-brochure--gallery">
+                            <span class="pdf-badge">PDF</span> Скачать буклет <span class="pdf-size">~5 МБ</span>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Text/Specs Column -->
@@ -1483,10 +1526,7 @@
                     </div>
 
                     <div class="modal__content-actions">
-                        <a href="#testdrive_modal" class="btn btn-primary" style="width: 100%;">Запросить стоимость</a>
-                        <a href="assets/brochures/flybridge/t-rex-fly-44.pdf" target="_blank" rel="noopener" class="btn-brochure">
-                            <span class="pdf-badge">PDF</span> Скачать буклет <span style="margin-left:auto; color:#888; font-size:11px;">~5 МБ</span>
-                        </a>
+                        <a href="#testdrive_modal" class="btn btn-primary">Запросить стоимость</a>
                     </div>
 
                 </div>
@@ -1524,6 +1564,12 @@
                         <a href="#cruiser_img6" class="modal__thumbLink"><img class="modal__thumb" src="images/cruiser/TRex44CR_07_Stealth_Storm_Run.jpg" alt="Storm Run"></a>
                     </div>
                     <div class="mono" style="margin-top:12px; color:#666;">// Exterior / Interior</div>
+
+                    <div class="modal__media-actions">
+                        <a href="assets/brochures/cruiser/t-rex-cruiser-44.pdf" target="_blank" rel="noopener" class="btn-brochure btn-brochure--gallery">
+                            <span class="pdf-badge">PDF</span> Скачать буклет <span class="pdf-size">~5 МБ</span>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Text/Specs Column -->
@@ -1545,10 +1591,7 @@
                     </div>
 
                     <div class="modal__content-actions">
-                        <a href="#testdrive_modal" class="btn btn-primary" style="width: 100%;">Запросить стоимость</a>
-                        <a href="assets/brochures/cruiser/t-rex-cruiser-44.pdf" target="_blank" rel="noopener" class="btn-brochure">
-                            <span class="pdf-badge">PDF</span> Скачать буклет <span style="margin-left:auto; color:#888; font-size:11px;">~5 МБ</span>
-                        </a>
+                        <a href="#testdrive_modal" class="btn btn-primary">Запросить стоимость</a>
                     </div>
 
                 </div>
