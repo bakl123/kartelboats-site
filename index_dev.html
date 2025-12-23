@@ -1125,7 +1125,7 @@
         /* ИСПРАВЛЕНО: Кнопка стоимости снова широкая и заметная */
         .modal__content-actions .btn { 
             width: 100%; 
-            /* max-width: 420px; */ /* REMOVED LIMIT */
+            max-width: 420px;
             justify-content: center;
         }
         
@@ -1144,6 +1144,154 @@
                align-items: center;
            }
         }
+
+        /* RGO PARTNERSHIP STYLES */
+        .rgo-partnership {
+            margin-top: 60px;
+            border: var(--border-thin);
+            position: relative;
+            background-color: #0c0c0c;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .rgo-partnership__bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/projects/rgo/rgo-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            z-index: 0;
+        }
+        
+        .rgo-partnership__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.4) 100%);
+            z-index: 1;
+            backdrop-filter: blur(2px);
+        }
+
+        .rgo-partnership__content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 32px;
+            max-width: 600px;
+        }
+
+        .rgo-logo {
+            width: 120px;
+            height: auto;
+            display: block;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .rgo-title {
+            font-size: 32px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .rgo-text {
+            color: #ccc;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .rgo-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-rgo {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            border-color: rgba(255,255,255,0.3);
+            color: #fff;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+        }
+        .btn-rgo:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0,0,0,0.6);
+        }
+
+        /* EXPERT CARD STYLES */
+        .expert-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+        }
+        @media(min-width: 768px) {
+            .expert-grid { grid-template-columns: 1fr 1fr; }
+        }
+        
+        .expert-card {
+            background: #111;
+            border: var(--border-thin);
+            padding: 20px;
+        }
+        .expert-card h4 {
+            color: var(--accent);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        .expert-card .role {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 12px;
+            display: block;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .expert-card p {
+            font-size: 14px;
+            color: #ddd;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .expert-card .source {
+            font-size: 11px;
+            color: #555;
+            text-decoration: none;
+            border-bottom: 1px dotted #555;
+        }
+        .expert-card .source:hover { color: #888; border-color: #888; }
+        
+        /* RGO ROUTES LIST */
+        .rgo-route-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 16px;
+        }
+        .rgo-route-item {
+            background: #111;
+            border: var(--border-thin);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .rgo-route-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+        }
+        .rgo-route-val {
+            color: #fff;
+            font-size: 15px;
+        }
+
     </style>
 </head>
 <body>
@@ -1343,6 +1491,23 @@
                     От шлюзов Москвы до штормов Ладоги и экспедиций на Байкал.
                     Автономность до 1200 км открывает маршруты, недоступные для большинства яхт.
                 </p>
+                
+                <!-- RGO PARTNERSHIP BLOCK -->
+                <div class="rgo-partnership">
+                    <div class="rgo-partnership__bg"></div>
+                    <div class="rgo-partnership__overlay"></div>
+                    <div class="rgo-partnership__content">
+                        <img src="assets/partners/rgo/rgo-logo.png" alt="РГО Лого" class="rgo-logo">
+                        <h3 class="rgo-title">Партнёрство с РГО</h3>
+                        <p class="rgo-text">
+                            Мы строим флот для реальных экспедиций. KARTEL Boats — технический партнёр Русского географического общества. Наши корпуса проверяются не в марине, а в автономных переходах по Енисею и северным широтам. Не маркетинг — практика.
+                        </p>
+                        <div class="rgo-actions">
+                            <a href="#rgo_routes_modal" class="btn btn-secondary btn-rgo">Открыть рейсы РГО</a>
+                            <a href="#rgo_experts_modal" class="btn btn-secondary btn-rgo">Мнение экспертов</a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="map-interface">
                     <!-- Points removed for cleaner look -->
@@ -1398,6 +1563,10 @@
 
     <!-- ANCHOR FOR TEST DRIVE MODAL -->
     <a id="testdrive_modal" class="anchor"></a>
+    
+    <!-- ANCHORS FOR RGO MODALS -->
+    <a id="rgo_routes_modal" class="anchor"></a>
+    <a id="rgo_experts_modal" class="anchor"></a>
 
     <!-- MODAL -->
     <div id="shipyard_modal" class="modal">
@@ -1594,6 +1763,90 @@
                         <a href="#testdrive_modal" class="btn btn-primary">Запросить стоимость</a>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RGO ROUTES MODAL -->
+    <div id="rgo_routes_modal" class="modal">
+        <a href="#geography_map" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Рейсы РГО">
+            <div class="modal__header">
+                <div class="mono">// RGO EXPEDITIONS</div>
+                <a href="#geography_map" class="modal__close" aria-label="Закрыть">✕</a>
+            </div>
+            
+            <h2>Экспедиция «Сибирский исследователь»</h2>
+            <p style="max-width:800px; margin-bottom:24px;">
+                Уникальный историко-географический проект по исследованию реки Енисей и побережья Карского моря. KARTEL Boats выступили техническим партнером, предоставив экспедиционное судно класса T-Rex для прохождения маршрута высшей категории сложности.
+            </p>
+            
+            <div class="rgo-route-list">
+                <div class="rgo-route-item">
+                    <div class="rgo-route-label">Маршрут</div>
+                    <div class="rgo-route-val">Красноярск — Дудинка — Диксон — Карское море</div>
+                </div>
+                <div class="rgo-route-item">
+                    <div class="rgo-route-label">Дистанция</div>
+                    <div class="rgo-route-val">> 6000 км автономного хода по сибирским рекам и арктическим водам</div>
+                </div>
+                <div class="rgo-route-item">
+                    <div class="rgo-route-label">Миссия</div>
+                    <div class="rgo-route-val">Поиск исторических артефактов, экологический мониторинг Арктики, испытание техники</div>
+                </div>
+                <div class="rgo-route-item">
+                    <div class="rgo-route-label">Условия</div>
+                    <div class="rgo-route-val">Шторма до 5 баллов, ледовая крошка, отсутствие инфраструктуры на 80% пути</div>
+                </div>
+            </div>
+            
+            <div class="modal__content-actions" style="margin-top:32px;">
+                <a href="https://www.rgo.ru/ru/krasnoyarsk/proekty/sibirskiy-issledovatel" target="_blank" rel="noopener" class="btn btn-secondary">Страница проекта РГО</a>
+                <a href="https://www.sibexplorer.ru/" target="_blank" rel="noopener" class="btn btn-secondary">Siberian Explorer</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RGO EXPERTS MODAL -->
+    <div id="rgo_experts_modal" class="modal">
+        <a href="#geography_map" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Мнение экспертов">
+            <div class="modal__header">
+                <div class="mono">// EXPERT OPINIONS</div>
+                <a href="#geography_map" class="modal__close" aria-label="Закрыть">✕</a>
+            </div>
+            
+            <h2>Прямая речь: экипаж и эксперты</h2>
+            <p style="margin-bottom:24px;">Оценки профессионалов, прошедших на T-Rex тысячи километров по Енисею и Арктике.</p>
+            
+            <div class="expert-grid">
+                <div class="expert-card">
+                    <h4>Игорь Спириденко</h4>
+                    <span class="role">Председатель Красноярского отделения РГО</span>
+                    <p>«Это судно показало себя блестяще. Мы прошли сложнейшие участки, где другие просто не рискнули бы идти. Надежность корпуса T-Rex стала залогом успеха всей экспедиции "Сибирский исследователь".»</p>
+                    <a href="https://www.rgo.ru/ru/krasnoyarsk/proekty/sibirskiy-issledovatel" target="_blank" class="source">Источник: РГО</a>
+                </div>
+                
+                <div class="expert-card">
+                    <h4>Александр Гончаров</h4>
+                    <span class="role">Капитан экспедиционного судна</span>
+                    <p>«В шторм на Енисее волна короткая и злая. T-Rex режет её, не сбавляя ход. Управляемость феноменальная для такого размера. Автономность позволила нам идти сутками без дозаправки.»</p>
+                    <a href="https://expert-club.online/news/v-krasnoyarsk-iz-saratova-pribudet-unikalnoe-ekspeditsionnoe-sudno" target="_blank" class="source">Источник: Expert Club</a>
+                </div>
+                
+                <div class="expert-card">
+                    <h4>Сергей Астахов</h4>
+                    <span class="role">Технический директор экспедиции</span>
+                    <p>«Алюминий АМГ5М — это не маркетинг, это жизнь. Мы несколько раз касались топляка на скорости. Пластик бы рассыпался, а здесь — ни вмятины. Инженерия на уровне военной приемки.»</p>
+                    <span class="source">Источник: Бортовой журнал</span>
+                </div>
+                
+                <div class="expert-card">
+                    <h4>Владимир Черников</h4>
+                    <span class="role">Велопутешественник, участник РГО</span>
+                    <p>«Комфорт внутри при -5 за бортом — это важно. Отопители справлялись, мы спали в тепле, готовили горячую еду. Это настоящий дом на воде, готовый к любой погоде.»</p>
+                    <a href="https://www.sibexplorer.ru/" target="_blank" class="source">Источник: SibExplorer</a>
                 </div>
             </div>
         </div>
