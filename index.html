@@ -7,7 +7,7 @@
     <meta name="description" content="KARTEL Boats: алюминиевые экспедиционные яхты класса Brutal Luxury линейки T-Rex. Производство в Саратове, офис в Москве.">
     
     <style>
-        /* KARTEL BOATS DESIGN SYSTEM v1.0 */
+        /* KARTEL BOATS DESIGN SYSTEM v1.5 (Restored & Fixed) */
 
         :root {
             --bg-main: #000000;
@@ -1477,6 +1477,197 @@
             background: #555; 
         }
 
+        /* CONTACTS SECTION STYLES (Restored Visuals) */
+        .contacts-hub {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (min-width: 1024px) {
+            .contacts-hub {
+                grid-template-columns: 400px 1fr;
+            }
+        }
+
+        .contacts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: var(--border-thin);
+            padding: 24px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-role {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .contact-city {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .contact-address {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .contact-phone {
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .contact-note {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            border-top: 1px solid #333;
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+
+        /* RADAR MAP STYLES (Restored Visuals + New Positions) */
+        .radar-map-container {
+            position: relative;
+            background: #080808;
+            border: var(--border-thin);
+            min-height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .radar-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('kartel-explorer-map.jpg');
+            background-size: cover;
+            /* ZOOM AND CENTER FIX */
+            background-position: 30% center; 
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            filter: grayscale(100%) contrast(1.2);
+        }
+
+        .radar-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        .radar-sweep {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100%; height: 100%;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(206, 254, 70, 0.1) 60deg, transparent 60deg);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: radarSpin 4s linear infinite;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        @keyframes radarSpin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Map Points - Adjusted for new zoom */
+        .map-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            z-index: 10;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .map-point::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .map-point-label {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 10px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            border: 1px solid #333;
+            pointer-events: none;
+        }
+
+        /* Moscow approx pos (Left-Topish - Adjusted West) */
+        .point-msk { top: 35%; left: 20%; }
+        
+        /* Saratov approx pos (Lower-Right relative to Msk - Adjusted West) */
+        .point-srt { top: 52%; left: 28%; }
+
     </style>
 </head>
 <body>
@@ -1488,8 +1679,9 @@
             </a>
             <nav class="nav-links">
                 <a href="#lineup_selector" class="nav-link">Модели</a>
-                <a href="#engineering_dna" class="nav-link">Технологии</a>
+                <a href="#shipyard_modal" class="nav-link">Технологии</a>
                 <a href="#geography_map" class="nav-link">Маршруты</a>
+                <!-- Link directly to ID -->
                 <a href="#testdrive_modal" class="btn btn-primary nav-cta">Тест-драйв</a>
             </nav>
         </div>
@@ -1743,6 +1935,80 @@
             </div>
         </section>
 
+        <!-- NEW CONTACTS & BASES SECTION (RESTORED STYLE) -->
+        <section id="contacts" class="section" style="background: #000;">
+            <div class="container">
+                <div class="mono" style="margin-bottom: 20px;">// CONTACT PERIMETER</div>
+                <h2>Базы базирования</h2>
+                
+                <div class="contacts-hub">
+                    <!-- Left: Locations List -->
+                    <div class="contacts-list">
+                        <!-- Moscow -->
+                        <div class="contact-card">
+                            <span class="contact-role">Штаб-квартира & Продажи</span>
+                            <h3 class="contact-city">МОСКВА, ЦМТ</h3>
+                            <div class="contact-address">
+                                Краснопресненская наб. 12<br>
+                                6-й подъезд, 11 этаж, офис 1148<br>
+                                Гостиница «Международная»
+                            </div>
+                            <a href="tel:+74957418258" class="contact-phone">+7 (495) 741-82-58</a>
+                            <div class="contact-note">
+                                // Репрезентативный офис в центре. Встретим с кофе, вином и вниманием к деталям.
+                            </div>
+                        </div>
+
+                        <!-- Saratov Showroom -->
+                        <div class="contact-card">
+                            <span class="contact-role">Шоурум на воде</span>
+                            <h3 class="contact-city">САРАТОВ, ВОЛГА</h3>
+                            <div class="contact-address">
+                                <a href="https://yandex.ru/maps/?pt=46.081743,51.544010&z=17&l=map" target="_blank" rel="noopener" style="color: #fff; text-decoration: underline; text-decoration-color: var(--accent);">
+                                    г. Саратов, ул. Большая Затонская (район Затона)
+                                </a>
+                                <br>
+                                <span style="font-size: 12px; color: #888; font-family: monospace;">51.544010, 46.081743</span>
+                            </div>
+                            <div class="contact-note">
+                                // Тест-драйв в реальных условиях. Почувствуйте корпус на воде перед покупкой.
+                            </div>
+                        </div>
+
+                        <!-- Saratov Shipyard -->
+                        <div class="contact-card">
+                            <span class="contact-role">Производство & Heritage</span>
+                            <h3 class="contact-city">КОРАБЕЛЬНАЯ АРТЕЛЬ</h3>
+                            <div class="contact-address">
+                                г. Саратов, Производственная база<br>
+                                Историческая верфь
+                            </div>
+                            <a href="https://k-artel.pro/" target="_blank" rel="noopener" class="btn btn-secondary" style="margin-top: 12px; font-size: 11px;">
+                                История верфи →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Radar Map Interface -->
+                    <div class="radar-map-container">
+                        <div class="radar-bg"></div>
+                        <div class="radar-grid"></div>
+                        <div class="radar-sweep"></div>
+                        
+                        <!-- Moscow Point -->
+                        <div class="map-point point-msk" title="Москва">
+                            <div class="map-point-label">MSK / HQ</div>
+                        </div>
+
+                        <!-- Saratov Point -->
+                        <div class="map-point point-srt" title="Саратов">
+                            <div class="map-point-label">SRT / BASE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- FOOTER CTA -->
@@ -1755,19 +2021,84 @@
             </div>
             
             <div class="footer-links">
-                <a href="#">Контакты</a>
-                <a href="#">О верфи</a>
-                <a href="#">Модельный ряд</a>
+                <!-- Updated Links as requested -->
+                <a href="#contacts">Контакты</a>
+                <a href="https://k-artel.pro/" target="_blank" rel="noopener">О верфи</a>
+                <a href="#lineup_selector">Модельный ряд</a>
             </div>
             <div class="mono" style="margin-top: 32px; color: #333;">© 2025 KARTEL BOATS</div>
         </div>
     </footer>
 
+    <!-- ANCHOR FOR TEST DRIVE MODAL (FIXED POSITION) -->
+    <div id="testdrive_modal" class="modal">
+        <a href="#footer_cta" class="modal__overlay" aria-label="Закрыть"></a>
+
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Запрос на тест-драйв">
+            <div class="modal__header">
+                <div class="mono">// TEST DRIVE REQUEST</div>
+                <a href="#footer_cta" class="modal__close" aria-label="Закрыть">✕</a>
+            </div>
+
+            <h2>Запрос на тест-драйв</h2>
+            <p>Оставьте контакты — мы свяжемся и согласуем модель, локацию и удобное время. Быстро. По делу. Без спама.</p>
+
+            <!-- FORM (UI) -->
+            <form class="kb-form" action="https://formsubmit.co/REPLACE_ME" method="POST">
+                <input type="hidden" name="_subject" value="KARTEL | Запрос на тест-драйв">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="kb-grid">
+                    <div class="kb-field">
+                        <label for="kb_phone">Телефон</label>
+                        <input id="kb_phone" name="phone" type="tel" placeholder="+7 ___ ___-__-__" required>
+                    </div>
+
+                    <div class="kb-field">
+                        <label for="kb_email">Email</label>
+                        <input id="kb_email" name="email" type="email" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="kb-field kb-span-2">
+                        <label for="kb_model">Интересующая модель</label>
+                        <select id="kb_model" name="model" required>
+                            <option value="" disabled selected>Выберите модель</option>
+                            <option>T-Rex Flybridge</option>
+                            <option>T-Rex Cruiser</option>
+                            <option>T-Rex Egoist</option>
+                            <option>T-Rex Family</option>
+                            <option>T-Rex Specialist</option>
+                        </select>
+                    </div>
+
+                    <div class="kb-field kb-span-2">
+                        <label>Способ связи</label>
+                        <div class="kb-radio">
+                            <label><input type="radio" name="contact_method" value="Звонок" checked> Звонок</label>
+                            <label><input type="radio" name="contact_method" value="WhatsApp"> WhatsApp</label>
+                            <label><input type="radio" name="contact_method" value="Telegram"> Telegram</label>
+                            <label><input type="radio" name="contact_method" value="Email"> Email</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kb-actions">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                    <a href="#footer_cta" class="btn btn-secondary">Закрыть</a>
+                </div>
+
+                <div class="kb-note mono" style="color:#555; margin-top:14px;">
+                    // Нажимая “Отправить”, вы соглашаетесь на обратную связь от KARTEL Boats.
+                </div>
+            </form>
+        </div>
+    </div>
+    
     <!-- ANCHORS FOR RGO MODALS -->
     <a id="rgo_routes_modal" class="anchor"></a>
     <a id="rgo_experts_modal" class="anchor"></a>
 
-    <!-- MODAL -->
+    <!-- MODAL (SHIPYARD RESTORED) -->
     <div id="shipyard_modal" class="modal">
         <a href="#engineering_dna" class="modal__overlay" aria-label="Закрыть"></a>
 
@@ -1824,6 +2155,10 @@
                     <div class="modal__block">
                         <div class="mono">// Русская душа</div>
                         <p>Корпус сделан на Волге. Это про характер, про маршрут и про уважение к металлу — спокойно, точно, навсегда.</p>
+                    </div>
+                    
+                    <div class="modal__content-actions" style="margin-top: 32px; border-top: 1px solid #333; padding-top: 24px;">
+                        <a href="https://k-artel.pro/" target="_blank" rel="noopener" class="btn btn-secondary" style="width: 100%; justify-content: center;">Перейти на сайт Корабельной Артели →</a>
                     </div>
                 </div>
             </div>
@@ -2058,67 +2393,176 @@
         </div>
     </div>
 
-    <!-- TEST DRIVE MODAL (FIXED - MOVED TO END & UPDATED ID) -->
-    <div id="testdrive_modal" class="modal">
-        <a href="#footer_cta" class="modal__overlay" aria-label="Закрыть"></a>
+    <!-- LIGHTBOX MODALS FOR SHIPYARD IMAGES -->
+    <div id="shipyard_img_1" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_salon_goldenhour_06_4K.jpg" alt="Салон: панорамный свет, тёплый маршрут">
+            <a href="#shipyard_img_2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
 
-        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Запрос на тест-драйв">
-            <div class="modal__header">
-                <div class="mono">// TEST DRIVE REQUEST</div>
-                <a href="#footer_cta" class="modal__close" aria-label="Закрыть">✕</a>
-            </div>
+    <div id="shipyard_img_2" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44_salon_helm_warm-route_07_4K.jpg" alt="Пост управления: навигация и контроль">
+            <a href="#shipyard_img_3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
 
-            <h2>Запрос на тест-драйв</h2>
-            <p>Оставьте контакты — мы свяжемся и согласуем модель, локацию и удобное время. Быстро. По делу. Без спама.</p>
+    <div id="shipyard_img_3" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Нижняя каюта: уют и тишина">
+            <a href="#shipyard_img_4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
 
-            <!-- FORM (UI) -->
-            <form class="kb-form" action="https://formsubmit.co/REPLACE_ME" method="POST">
-                <input type="hidden" name="_subject" value="KARTEL | Запрос на тест-драйв">
-                <input type="hidden" name="_template" value="table">
+    <div id="shipyard_img_4" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44_guest_bathroom_spa-details_02_4K.jpg" alt="Санузел: детали и материалы">
+            <a href="#shipyard_img_5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
 
-                <div class="kb-grid">
-                    <div class="kb-field">
-                        <label for="kb_phone">Телефон</label>
-                        <input id="kb_phone" name="phone" type="tel" placeholder="+7 ___ ___-__-__" required>
-                    </div>
+    <div id="shipyard_img_5" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_shower_zone_12_4K.jpg" alt="Душевая зона: камень, металл, тепло">
+            <a href="#shipyard_img_6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
 
-                    <div class="kb-field">
-                        <label for="kb_email">Email</label>
-                        <input id="kb_email" name="email" type="email" placeholder="name@example.com" required>
-                    </div>
+    <div id="shipyard_img_6" class="modal modal--media">
+        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#shipyard_img_5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_engine-room_clean_13_4K.jpg" alt="Техотсек: аккуратная силовая сборка">
+            <a href="#shipyard_img_1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
 
-                    <div class="kb-field kb-span-2">
-                        <label for="kb_model">Интересующая модель</label>
-                        <select id="kb_model" name="model" required>
-                            <option value="" disabled selected>Выберите модель</option>
-                            <option>T-Rex Flybridge</option>
-                            <option>T-Rex Cruiser</option>
-                            <option>T-Rex Egoist</option>
-                            <option>T-Rex Family</option>
-                            <option>T-Rex Specialist</option>
-                        </select>
-                    </div>
+    <!-- LIGHTBOX MODALS FOR FLYBRIDGE IMAGES -->
+    <div id="flybridge_img1" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44Fly_FRONT_RUNNING_LUX.jpg" alt="Front Running">
+            <a href="#flybridge_img2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="flybridge_img2" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44Fly_01_STERN_LUX_MARINA_16x9_4K.jpg" alt="Stern Marina">
+            <a href="#flybridge_img3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="flybridge_img3" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44Fly_04_GOLDEN_STORM_CHARGE.jpg" alt="Storm Charge">
+            <a href="#flybridge_img4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="flybridge_img4" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44_master-cabin_boutique-suite_03_4K.jpg" alt="Master Cabin">
+            <a href="#flybridge_img5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="flybridge_img5" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Lower Cabin">
+            <a href="#flybridge_img6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="flybridge_img6" class="modal modal--media">
+        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#flybridge_img5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/flybridge/T-Rex44_bathroom_shower-comfort_01_4K.jpg" alt="Bathroom">
+            <a href="#flybridge_img1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
 
-                    <div class="kb-field kb-span-2">
-                        <label>Способ связи</label>
-                        <div class="kb-radio">
-                            <label><input type="radio" name="contact_method" value="Звонок" checked> Звонок</label>
-                            <label><input type="radio" name="contact_method" value="WhatsApp"> WhatsApp</label>
-                            <label><input type="radio" name="contact_method" value="Telegram"> Telegram</label>
-                            <label><input type="radio" name="contact_method" value="Email"> Email</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="kb-actions">
-                    <button type="submit" class="btn btn-primary">Отправить</button>
-                    <a href="#footer_cta" class="btn btn-secondary">Закрыть</a>
-                </div>
-
-                <div class="kb-note mono" style="color:#555; margin-top:14px;">
-                    // Нажимая “Отправить”, вы соглашаетесь на обратную связь от KARTEL Boats.
-                </div>
-            </form>
+    <!-- LIGHTBOX MODALS FOR CRUISER IMAGES -->
+    <div id="cruiser_img1" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/TRex44CR_01_Aft_Terrace_Sunset.jpg" alt="Aft Terrace">
+            <a href="#cruiser_img2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="cruiser_img2" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/TRex44CR_02_Marina_Lounge.jpg" alt="Marina Lounge">
+            <a href="#cruiser_img3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="cruiser_img3" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_cockpit_river-view_03_4K.jpg" alt="Cockpit View">
+            <a href="#cruiser_img4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="cruiser_img4" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_mastercabin_evening_05_4K.jpg" alt="Master Cabin">
+            <a href="#cruiser_img5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="cruiser_img5" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_bathroom_portlights_09_4K.jpg" alt="Bathroom">
+            <a href="#cruiser_img6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+    <div id="cruiser_img6" class="modal modal--media">
+        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="modal__dialog modal__dialog--media">
+            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
+            <a href="#cruiser_img5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
+            <img class="modal__media" src="images/cruiser/TRex44CR_07_Stealth_Storm_Run.jpg" alt="Storm Run">
+            <a href="#cruiser_img1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
         </div>
     </div>
 
