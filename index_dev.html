@@ -1303,21 +1303,21 @@
         .rgo-badge {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
 
-        .rgo-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid rgba(206, 254, 70, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.4);
-            color: var(--accent);
-            font-size: 10px;
-            font-weight: 700;
+        /* NEW LOGO STYLE FOR MAP PANEL */
+        .rgo-logo-small {
+            height: 52px;
+            width: auto;
+            display: block;
+            /* Monochromatic filter for brutal look, remove if color preferred */
+            filter: grayscale(1) brightness(1.2); 
+            transition: var(--transition);
+        }
+        
+        .rgo-logo-small:hover {
+            filter: grayscale(0) brightness(1);
         }
 
         .rgo-status-text {
@@ -1432,7 +1432,7 @@
 
         .rgo-quote {
             position: relative;
-            padding-left: 16px;
+            padding-left: 20px;
             border-left: 2px solid #333;
             margin-bottom: 32px;
             transition: border-color 0.3s;
@@ -1445,9 +1445,23 @@
             align-items: center;
             gap: 12px;
         }
+        
+        /* UX STYLED AVATAR (NO IMAGE) */
         .rgo-author-avatar {
-            width: 32px; height: 32px; background: #333; border-radius: 50%;
+            width: 36px; 
+            height: 36px; 
+            background: transparent; 
+            border: 1px solid #444;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            font-family: 'Courier New', Courier, monospace;
         }
+
         .rgo-author-name { color: #fff; font-weight: 700; font-size: 14px; line-height: 1.2; }
         .rgo-author-role { color: #666; font-size: 10px; text-transform: uppercase; }
 
@@ -1676,7 +1690,8 @@
                     <div class="glass-panel-rgo gpu-accelerated">
                         <div class="rgo-header">
                             <div class="rgo-badge">
-                                <div class="rgo-icon">RGO</div>
+                                <!-- UPDATED: REAL RGO LOGO -->
+                                <img src="assets/partners/rgo/rgo-logo.png" alt="РГО" class="rgo-logo-small">
                                 <span class="rgo-status-text">Стратегическое Партнерство</span>
                             </div>
                             <div class="rgo-est">EST. 1845</div>
@@ -1957,243 +1972,6 @@
         </div>
     </div>
 
-    <!-- LIGHTBOX MODALS FOR SHIPYARD IMAGES -->
-    <div id="shipyard_img_1" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_salon_goldenhour_06_4K.jpg" alt="Салон: панорамный свет, тёплый маршрут">
-            <a href="#shipyard_img_2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <div id="shipyard_img_2" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44_salon_helm_warm-route_07_4K.jpg" alt="Пост управления: навигация и контроль">
-            <a href="#shipyard_img_3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <div id="shipyard_img_3" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Нижняя каюта: уют и тишина">
-            <a href="#shipyard_img_4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <div id="shipyard_img_4" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44_guest_bathroom_spa-details_02_4K.jpg" alt="Санузел: детали и материалы">
-            <a href="#shipyard_img_5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <div id="shipyard_img_5" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_shower_zone_12_4K.jpg" alt="Душевая зона: камень, металл, тепло">
-            <a href="#shipyard_img_6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <div id="shipyard_img_6" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_engine-room_clean_13_4K.jpg" alt="Техотсек: аккуратная силовая сборка">
-            <a href="#shipyard_img_1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <!-- LIGHTBOX MODALS FOR FLYBRIDGE IMAGES -->
-    <div id="flybridge_img1" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44Fly_FRONT_RUNNING_LUX.jpg" alt="Front Running">
-            <a href="#flybridge_img2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="flybridge_img2" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44Fly_01_STERN_LUX_MARINA_16x9_4K.jpg" alt="Stern Marina">
-            <a href="#flybridge_img3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="flybridge_img3" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44Fly_04_GOLDEN_STORM_CHARGE.jpg" alt="Storm Charge">
-            <a href="#flybridge_img4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="flybridge_img4" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44_master-cabin_boutique-suite_03_4K.jpg" alt="Master Cabin">
-            <a href="#flybridge_img5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="flybridge_img5" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Lower Cabin">
-            <a href="#flybridge_img6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="flybridge_img6" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44_bathroom_shower-comfort_01_4K.jpg" alt="Bathroom">
-            <a href="#flybridge_img1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <!-- LIGHTBOX MODALS FOR CRUISER IMAGES -->
-    <div id="cruiser_img1" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/TRex44CR_01_Aft_Terrace_Sunset.jpg" alt="Aft Terrace">
-            <a href="#cruiser_img2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="cruiser_img2" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/TRex44CR_02_Marina_Lounge.jpg" alt="Marina Lounge">
-            <a href="#cruiser_img3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="cruiser_img3" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_cockpit_river-view_03_4K.jpg" alt="Cockpit View">
-            <a href="#cruiser_img4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="cruiser_img4" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_mastercabin_evening_05_4K.jpg" alt="Master Cabin">
-            <a href="#cruiser_img5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="cruiser_img5" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_bathroom_portlights_09_4K.jpg" alt="Bathroom">
-            <a href="#cruiser_img6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="cruiser_img6" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/TRex44CR_07_Stealth_Storm_Run.jpg" alt="Storm Run">
-            <a href="#cruiser_img1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <!-- TEST DRIVE MODAL -->
-    <div class="modal testdrive-modal">
-        <a href="#footer_cta" class="modal__overlay" aria-label="Закрыть"></a>
-
-        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Запрос на тест-драйв">
-            <div class="modal__header">
-                <div class="mono">// TEST DRIVE REQUEST</div>
-                <a href="#footer_cta" class="modal__close" aria-label="Закрыть">✕</a>
-            </div>
-
-            <h2>Запрос на тест-драйв</h2>
-            <p>Оставьте контакты — мы свяжемся и согласуем модель, локацию и удобное время. Быстро. По делу. Без спама.</p>
-
-            <!-- FORM (UI) -->
-            <form class="kb-form" action="https://formsubmit.co/REPLACE_ME" method="POST">
-                <input type="hidden" name="_subject" value="KARTEL | Запрос на тест-драйв">
-                <input type="hidden" name="_template" value="table">
-
-                <div class="kb-grid">
-                    <div class="kb-field">
-                        <label for="kb_phone">Телефон</label>
-                        <input id="kb_phone" name="phone" type="tel" placeholder="+7 ___ ___-__-__" required>
-                    </div>
-
-                    <div class="kb-field">
-                        <label for="kb_email">Email</label>
-                        <input id="kb_email" name="email" type="email" placeholder="name@example.com" required>
-                    </div>
-
-                    <div class="kb-field kb-span-2">
-                        <label for="kb_model">Интересующая модель</label>
-                        <select id="kb_model" name="model" required>
-                            <option value="" disabled selected>Выберите модель</option>
-                            <option>T-Rex Flybridge</option>
-                            <option>T-Rex Cruiser</option>
-                            <option>T-Rex Egoist</option>
-                            <option>T-Rex Family</option>
-                            <option>T-Rex Specialist</option>
-                        </select>
-                    </div>
-
-                    <div class="kb-field kb-span-2">
-                        <label>Способ связи</label>
-                        <div class="kb-radio">
-                            <label><input type="radio" name="contact_method" value="Звонок" checked> Звонок</label>
-                            <label><input type="radio" name="contact_method" value="WhatsApp"> WhatsApp</label>
-                            <label><input type="radio" name="contact_method" value="Telegram"> Telegram</label>
-                            <label><input type="radio" name="contact_method" value="Email"> Email</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="kb-actions">
-                    <button type="submit" class="btn btn-primary">Отправить</button>
-                    <a href="#footer_cta" class="btn btn-secondary">Закрыть</a>
-                </div>
-
-                <div class="kb-note mono" style="color:#555; margin-top:14px;">
-                    // Нажимая “Отправить”, вы соглашаетесь на обратную связь от KARTEL Boats.
-                </div>
-            </form>
-        </div>
-    </div>
-
     <!-- NEW RGO MISSION MODAL (From Report) -->
     <div id="rgo_modal_full" class="modal">
         <a href="#geography_map" class="modal__overlay" aria-label="Закрыть"></a>
@@ -2243,7 +2021,7 @@
                             <blockquote class="rgo-quote">
                                 <p>«Запуск "Сибирского исследователя" — это уникальный проект, аналогов которому не было десятилетиями. Команда продумала мельчайшие детали, объединив науку и комфорт».</p>
                                 <footer class="rgo-author">
-                                    <div class="rgo-author-avatar"></div>
+                                    <div class="rgo-author-avatar">АН</div>
                                     <div>
                                         <div class="rgo-author-name">Алексей Немков</div>
                                         <div class="rgo-author-role">Управление Губернатора Красноярского края</div>
@@ -2254,7 +2032,7 @@
                             <blockquote class="rgo-quote">
                                 <p>«Особенность судна — защитные накладки, усиливающие киль вдвое. Это позволяет работать в условиях сложной навигации, недоступных для обычных яхт».</p>
                                 <footer class="rgo-author">
-                                    <div class="rgo-author-avatar"></div>
+                                    <div class="rgo-author-avatar">ЮЛ</div>
                                     <div>
                                         <div class="rgo-author-name">Юрий Лобунов</div>
                                         <div class="rgo-author-role">Аналитик, Forbes Russia</div>
@@ -2265,7 +2043,7 @@
                             <blockquote class="rgo-quote">
                                 <p>«Уникальное судно, балансирующее между низкими эксплуатационными расходами и высокой исследовательской емкостью. Построено так, чтобы сохранить экипаж в самых непредсказуемых водах Федерации».</p>
                                 <footer class="rgo-author">
-                                    <div class="rgo-author-avatar"></div>
+                                    <div class="rgo-author-avatar">ИЕ</div>
                                     <div>
                                         <div class="rgo-author-name">Иннокентий Ершов</div>
                                         <div class="rgo-author-role">Капитан дальнего плавания</div>
