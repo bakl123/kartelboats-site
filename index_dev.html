@@ -727,9 +727,9 @@
         }
 
         footer {
-            padding: 80px 0 40px;
-            background-color: var(--bg-card);
-            border-top: 1px solid #333;
+            padding: 40px 0;
+            background-color: #000;
+            border-top: 1px solid #222;
             text-align: center;
         }
         
@@ -749,7 +749,196 @@
         .footer-links a { color: var(--text-muted); text-decoration: none; }
         .footer-links a:hover { color: var(--accent); }
 
-        /* UPDATED MOBILE MEDIA QUERY */
+        /* CONTACTS SECTION STYLES (NEW) */
+        .contacts-hub {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (min-width: 1024px) {
+            .contacts-hub {
+                grid-template-columns: 400px 1fr;
+            }
+        }
+
+        .contacts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: var(--border-thin);
+            padding: 24px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-role {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .contact-city {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .contact-address {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .contact-phone {
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .contact-note {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            border-top: 1px solid #333;
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+
+        /* RADAR MAP STYLES */
+        .radar-map-container {
+            position: relative;
+            background: #080808;
+            border: var(--border-thin);
+            min-height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .radar-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('kartel-explorer-map.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            filter: grayscale(100%) contrast(1.5);
+        }
+
+        .radar-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        .radar-sweep {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100%; height: 100%;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(206, 254, 70, 0.1) 60deg, transparent 60deg);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: radarSpin 4s linear infinite;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        @keyframes radarSpin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Map Points (Approximate visual placement based on Russia map logic) */
+        .map-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            z-index: 10;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .map-point::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .map-point-label {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 10px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            border: 1px solid #333;
+            pointer-events: none;
+        }
+
+        /* Moscow approx pos (Left-Topish) */
+        .point-msk { top: 35%; left: 20%; }
+        
+        /* Saratov approx pos (Lower-Right relative to Msk) */
+        .point-srt { top: 55%; left: 35%; }
+
+        /* Mobile Adjustments */
         @media (max-width: 767px) {
             .nav-container {
                 gap: 12px;
@@ -775,6 +964,10 @@
             /* Mobile logo adjustment */
             .logo-mark {
                 height: 48px; /* Final mobile size */
+            }
+            
+            .radar-map-container {
+                min-height: 250px;
             }
         }
 
@@ -1743,6 +1936,77 @@
             </div>
         </section>
 
+        <!-- NEW CONTACTS & BASES SECTION -->
+        <section id="contacts" class="section" style="background: #000;">
+            <div class="container">
+                <div class="mono" style="margin-bottom: 20px;">// CONTACT PERIMETER</div>
+                <h2>Базы базирования</h2>
+                
+                <div class="contacts-hub">
+                    <!-- Left: Locations List -->
+                    <div class="contacts-list">
+                        <!-- Moscow -->
+                        <div class="contact-card">
+                            <span class="contact-role">Штаб-квартира & Продажи</span>
+                            <h3 class="contact-city">МОСКВА, ЦМТ</h3>
+                            <div class="contact-address">
+                                Краснопресненская наб. 12<br>
+                                6-й подъезд, 11 этаж, офис 1148<br>
+                                Гостиница «Международная»
+                            </div>
+                            <a href="tel:+74957418258" class="contact-phone">+7 (495) 741-82-58</a>
+                            <div class="contact-note">
+                                // Репрезентативный офис в центре. Встретим с кофе, вином и вниманием к деталям.
+                            </div>
+                        </div>
+
+                        <!-- Saratov Showroom -->
+                        <div class="contact-card">
+                            <span class="contact-role">Шоурум на воде</span>
+                            <h3 class="contact-city">САРАТОВ, ВОЛГА</h3>
+                            <div class="contact-address">
+                                Координаты локации:<br>
+                                51.544010, 46.081743
+                            </div>
+                            <div class="contact-note">
+                                // Тест-драйв в реальных условиях. Почувствуйте корпус на воде перед покупкой.
+                            </div>
+                        </div>
+
+                        <!-- Saratov Shipyard -->
+                        <div class="contact-card">
+                            <span class="contact-role">Производство & Heritage</span>
+                            <h3 class="contact-city">КОРАБЕЛЬНАЯ АРТЕЛЬ</h3>
+                            <div class="contact-address">
+                                г. Саратов, Производственная база<br>
+                                Историческая верфь
+                            </div>
+                            <a href="http://ship-artel.ru/" target="_blank" rel="noopener" class="btn btn-secondary" style="margin-top: 12px; font-size: 11px;">
+                                История верфи →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Radar Map Interface -->
+                    <div class="radar-map-container">
+                        <div class="radar-bg"></div>
+                        <div class="radar-grid"></div>
+                        <div class="radar-sweep"></div>
+                        
+                        <!-- Moscow Point -->
+                        <div class="map-point point-msk" title="Москва">
+                            <div class="map-point-label">MSK / HQ</div>
+                        </div>
+
+                        <!-- Saratov Point -->
+                        <div class="map-point point-srt" title="Саратов">
+                            <div class="map-point-label">SRT / BASE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- FOOTER CTA -->
@@ -1755,14 +2019,18 @@
             </div>
             
             <div class="footer-links">
-                <a href="#">Контакты</a>
-                <a href="#">О верфи</a>
-                <a href="#">Модельный ряд</a>
+                <!-- Updated Links as requested -->
+                <a href="#contacts">Контакты</a>
+                <a href="http://ship-artel.ru/" target="_blank" rel="noopener">О верфи</a>
+                <a href="#lineup_selector">Модельный ряд</a>
             </div>
             <div class="mono" style="margin-top: 32px; color: #333;">© 2025 KARTEL BOATS</div>
         </div>
     </footer>
 
+    <!-- ANCHOR FOR TEST DRIVE MODAL -->
+    <a id="testdrive_modal" class="anchor"></a>
+    
     <!-- ANCHORS FOR RGO MODALS -->
     <a id="rgo_routes_modal" class="anchor"></a>
     <a id="rgo_experts_modal" class="anchor"></a>
