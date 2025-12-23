@@ -677,26 +677,6 @@
             text-transform: uppercase;
         }
 
-        #geography_map {
-            background: linear-gradient(180deg, var(--bg-main) 0%, #0a1014 100%);
-            text-align: center;
-        }
-
-        /* MAP INTERFACE UPDATED: Real map background, cleaned points */
-        .map-interface {
-            margin-top: 60px;
-            height: 420px;
-            border: var(--border-thin);
-            position: relative;
-            overflow: hidden;
-            background-image: 
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.85)),
-                url('kartel-explorer-map.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
         /* ROUTE STORIES STYLES */
         .route-stories {
             margin-top: 48px;
@@ -1145,85 +1125,6 @@
            }
         }
 
-        /* RGO PARTNERSHIP STYLES */
-        .rgo-partnership {
-            margin-top: 60px;
-            border: var(--border-thin);
-            position: relative;
-            background-color: #0c0c0c;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .rgo-partnership__bg {
-            position: absolute;
-            inset: 0;
-            background-image: url('assets/projects/rgo/rgo-hero.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.6;
-            z-index: 0;
-        }
-        
-        .rgo-partnership__overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.4) 100%);
-            z-index: 1;
-            backdrop-filter: blur(2px);
-        }
-
-        .rgo-partnership__content {
-            position: relative;
-            z-index: 2;
-            padding: 40px 32px;
-            max-width: 600px;
-        }
-
-        .rgo-logo {
-            width: 120px;
-            height: auto;
-            display: block;
-            margin-bottom: 24px;
-            opacity: 0.9;
-        }
-
-        .rgo-title {
-            font-size: 32px;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            color: #fff;
-        }
-
-        .rgo-text {
-            color: #ccc;
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 32px;
-        }
-
-        .rgo-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .btn-rgo {
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
-            border-color: rgba(255,255,255,0.3);
-            color: #fff;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(4px);
-        }
-        .btn-rgo:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(0,0,0,0.6);
-        }
-
         /* EXPERT CARD STYLES */
         .expert-grid {
             display: grid;
@@ -1266,30 +1167,302 @@
         }
         .expert-card .source:hover { color: #888; border-color: #888; }
         
-        /* RGO ROUTES LIST */
-        .rgo-route-list {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            gap: 16px;
+        /* --- RGO SECTION REDESIGN v2.0 (DEEP RESEARCH PATCH) --- */
+
+        /* 1. GPU Acceleration Hack for Safari Blur */
+        .gpu-accelerated {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            perspective: 1000px;
         }
-        .rgo-route-item {
-            background: #111;
-            border: var(--border-thin);
-            padding: 16px;
+
+        /* 2. Brutal Glass Panel Style */
+        .glass-panel-rgo {
+            background: rgba(15, 15, 15, 0.75);
+            /* WebKit prefix first is critical for legacy Safari */
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            backdrop-filter: blur(16px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid var(--accent);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.9);
+            position: relative;
+            overflow: hidden;
+            padding: 32px 40px;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        .glass-panel-rgo:hover {
+            transform: translateY(-4px);
+        }
+
+        /* 3. Noise Texture Overlay (Prevents banding on glass) */
+        .glass-panel-rgo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* RGO Section Structure */
+        #geography_map {
+            position: relative;
+            min-height: 85vh;
+            background-color: #050505;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+        }
+
+        .map-bg-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .map-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            filter: grayscale(100%) contrast(1.25);
+        }
+
+        /* Gradients for text readability */
+        .map-gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, #000 0%, transparent 50%, #000 100%);
+        }
+        .map-gradient-bottom {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #000 0%, transparent 40%);
+        }
+
+        .map-content-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: var(--container-width);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            justify-content: flex-end;
+            align-items: flex-end;
         }
-        .rgo-route-label {
-            font-size: 10px;
-            text-transform: uppercase;
+
+        @media (min-width: 900px) {
+            .map-content-wrapper {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+            }
+        }
+
+        .map-label {
+            display: none;
+        }
+        
+        @media (min-width: 900px) {
+            .map-label {
+                display: block;
+                margin-bottom: 32px;
+            }
+            .map-label h3 {
+                color: rgba(255,255,255,0.4);
+                font-size: 14px;
+                letter-spacing: 0.3em;
+            }
+            .map-label-line {
+                height: 64px;
+                width: 1px;
+                background-color: rgba(255,255,255,0.2);
+                margin-top: 16px;
+            }
+        }
+
+        .rgo-panel-wrapper {
+            width: 100%;
+            max-width: 640px;
+        }
+
+        .rgo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .rgo-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .rgo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(206, 254, 70, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.4);
             color: var(--accent);
-            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            font-weight: 700;
         }
-        .rgo-route-val {
+
+        .rgo-status-text {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .rgo-est {
+            color: rgba(255,255,255,0.3);
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .rgo-title-large {
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1;
+            margin-bottom: 16px;
             color: #fff;
-            font-size: 15px;
+        }
+
+        .rgo-desc {
+            color: #d1d5db;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            padding-left: 16px;
+        }
+
+        .rgo-actions-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* Modal Animation Helpers */
+        @keyframes modalEnter {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .animate-modal-enter {
+            animation: modalEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* RGO Modal Specifics */
+        .rgo-modal-dialog {
+            background: #111;
+            width: 100%;
+            max-width: 1024px;
+            height: 90vh; /* Fixed height for scroll inside */
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        @media (min-width: 900px) {
+            .rgo-modal-dialog {
+                height: auto;
+                max-height: 85vh;
+            }
+        }
+
+        .rgo-modal-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        @media (min-width: 900px) {
+            .rgo-modal-grid {
+                grid-template-columns: 5fr 7fr;
+                overflow: hidden;
+            }
+            .rgo-col-left {
+                border-right: 1px solid #333;
+                overflow-y: auto;
+            }
+            .rgo-col-right {
+                overflow-y: auto;
+            }
+        }
+
+        .rgo-col-left {
+            background: #161616;
+            padding: 32px;
+        }
+        .rgo-col-right {
+            background: #0a0a0a;
+            padding: 32px;
+        }
+
+        .rgo-dl {
+            display: grid;
+            gap: 12px;
+            font-size: 14px;
+        }
+        .rgo-dl-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #222;
+            padding-bottom: 8px;
+        }
+        .rgo-dt { color: #888; }
+        .rgo-dd { color: #fff; font-weight: 500; text-align: right; }
+        .rgo-dd-accent { color: var(--accent); }
+
+        .rgo-quote {
+            position: relative;
+            padding-left: 16px;
+            border-left: 2px solid #333;
+            margin-bottom: 32px;
+            transition: border-color 0.3s;
+        }
+        .rgo-quote:hover { border-left-color: var(--accent); }
+        .rgo-quote p { font-style: italic; color: #ccc; margin-bottom: 12px; font-size: 15px;}
+        
+        .rgo-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .rgo-author-avatar {
+            width: 32px; height: 32px; background: #333; border-radius: 50%;
+        }
+        .rgo-author-name { color: #fff; font-weight: 700; font-size: 14px; line-height: 1.2; }
+        .rgo-author-role { color: #666; font-size: 10px; text-transform: uppercase; }
+
+        /* Custom Scrollbar for inner modal */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #333; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555; 
         }
 
     </style>
@@ -1482,41 +1655,56 @@
             </div>
         </section>
 
-        <!-- GEOGRAPHY MAP (CLEANED + VIDEOS) -->
-        <section id="geography_map" class="section">
-            <div class="container">
-                <span class="mono">// EXPLORER</span>
-                <h2>Ваша география не ограничена</h2>
-                <p style="margin: 0 auto;">
-                    От шлюзов Москвы до штормов Ладоги и экспедиций на Байкал.
-                    Автономность до 1200 км открывает маршруты, недоступные для большинства яхт.
-                </p>
-                
-                <!-- RGO PARTNERSHIP BLOCK -->
-                <div class="rgo-partnership">
-                    <div class="rgo-partnership__bg"></div>
-                    <div class="rgo-partnership__overlay"></div>
-                    <div class="rgo-partnership__content">
-                        <img src="assets/partners/rgo/rgo-logo.png" alt="РГО Лого" class="rgo-logo">
-                        <h3 class="rgo-title">Партнёрство с РГО</h3>
-                        <p class="rgo-text">
-                            Мы строим флот для реальных экспедиций. KARTEL Boats — технический партнёр Русского географического общества. Наши корпуса проверяются не в марине, а в автономных переходах по Енисею и северным широтам. Не маркетинг — практика.
+        <!-- GEOGRAPHY MAP REDESIGN (OPTION C: COMMAND CENTER) -->
+        <section id="geography_map">
+            <!-- Background Layers -->
+            <div class="map-bg-layer">
+                <img src="kartel-explorer-map.jpg" class="map-img" alt="Карта экспедиций">
+                <div class="map-gradient-overlay"></div>
+                <div class="map-gradient-bottom"></div>
+            </div>
+
+            <div class="map-content-wrapper">
+                <!-- Decorative Label -->
+                <div class="map-label">
+                    <h3>GEOGRAPHY</h3>
+                    <div class="map-label-line"></div>
+                </div>
+
+                <!-- Floating Glass Panel -->
+                <div class="rgo-panel-wrapper">
+                    <div class="glass-panel-rgo gpu-accelerated">
+                        <div class="rgo-header">
+                            <div class="rgo-badge">
+                                <div class="rgo-icon">RGO</div>
+                                <span class="rgo-status-text">Стратегическое Партнерство</span>
+                            </div>
+                            <div class="rgo-est">EST. 1845</div>
+                        </div>
+
+                        <h2 class="rgo-title-large">ФЛАГМАН «СИБИРСКИЙ ИССЛЕДОВАТЕЛЬ»</h2>
+                        
+                        <p class="rgo-desc">
+                            18-метровый стальной титан класса «река-море». Создан на тех же стапелях, что и флот KARTEL, для выполнения миссий Русского географического общества в высоких широтах Арктики.
                         </p>
-                        <div class="rgo-actions">
-                            <a href="#rgo_routes_modal" class="btn btn-secondary btn-rgo">Открыть рейсы РГО</a>
-                            <a href="#rgo_experts_modal" class="btn btn-secondary btn-rgo">Мнение экспертов</a>
+
+                        <div class="rgo-actions-row">
+                            <a href="#rgo_modal_full" class="btn btn-primary" style="font-size: 12px; letter-spacing: 0.08em;">
+                                ОТКРЫТЬ ДОСЬЕ МИССИИ
+                            </a>
+                            
+                            <a href="https://www.rgo.ru/ru/krasnoyarsk/proekty/sibirskiy-issledovatel" target="_blank" rel="noopener" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.2); color: #fff;">
+                                RGO.RU
+                            </a>
                         </div>
                     </div>
                 </div>
-
-                <div class="map-interface">
-                    <!-- Points removed for cleaner look -->
-                </div>
-
-                <div style="margin-top: 40px;">
-                    <a href="#route_stories" class="btn btn-secondary">Истории маршрутов</a>
-                </div>
-
+            </div>
+        </section>
+        
+        <section style="padding: 40px 0; border-bottom: 1px solid #111;">
+            <div class="container">
+                <a href="#route_stories" class="btn btn-secondary">Истории маршрутов</a>
                 <!-- NEW ROUTE STORIES BLOCK -->
                 <div id="route_stories" class="route-stories">
                     <div class="route-card">
@@ -1541,6 +1729,7 @@
                 </div>
             </div>
         </section>
+
     </main>
 
     <!-- FOOTER CTA -->
@@ -1763,90 +1952,6 @@
                         <a href="#testdrive_modal" class="btn btn-primary">Запросить стоимость</a>
                     </div>
 
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- RGO ROUTES MODAL -->
-    <div id="rgo_routes_modal" class="modal">
-        <a href="#geography_map" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Рейсы РГО">
-            <div class="modal__header">
-                <div class="mono">// RGO EXPEDITIONS</div>
-                <a href="#geography_map" class="modal__close" aria-label="Закрыть">✕</a>
-            </div>
-            
-            <h2>Экспедиция «Сибирский исследователь»</h2>
-            <p style="max-width:800px; margin-bottom:24px;">
-                Уникальный историко-географический проект по исследованию реки Енисей и побережья Карского моря. KARTEL Boats выступили техническим партнером, предоставив экспедиционное судно класса T-Rex для прохождения маршрута высшей категории сложности.
-            </p>
-            
-            <div class="rgo-route-list">
-                <div class="rgo-route-item">
-                    <div class="rgo-route-label">Маршрут</div>
-                    <div class="rgo-route-val">Красноярск — Дудинка — Диксон — Карское море</div>
-                </div>
-                <div class="rgo-route-item">
-                    <div class="rgo-route-label">Дистанция</div>
-                    <div class="rgo-route-val">> 6000 км автономного хода по сибирским рекам и арктическим водам</div>
-                </div>
-                <div class="rgo-route-item">
-                    <div class="rgo-route-label">Миссия</div>
-                    <div class="rgo-route-val">Поиск исторических артефактов, экологический мониторинг Арктики, испытание техники</div>
-                </div>
-                <div class="rgo-route-item">
-                    <div class="rgo-route-label">Условия</div>
-                    <div class="rgo-route-val">Шторма до 5 баллов, ледовая крошка, отсутствие инфраструктуры на 80% пути</div>
-                </div>
-            </div>
-            
-            <div class="modal__content-actions" style="margin-top:32px;">
-                <a href="https://www.rgo.ru/ru/krasnoyarsk/proekty/sibirskiy-issledovatel" target="_blank" rel="noopener" class="btn btn-secondary">Страница проекта РГО</a>
-                <a href="https://www.sibexplorer.ru/" target="_blank" rel="noopener" class="btn btn-secondary">Siberian Explorer</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- RGO EXPERTS MODAL -->
-    <div id="rgo_experts_modal" class="modal">
-        <a href="#geography_map" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Мнение экспертов">
-            <div class="modal__header">
-                <div class="mono">// EXPERT OPINIONS</div>
-                <a href="#geography_map" class="modal__close" aria-label="Закрыть">✕</a>
-            </div>
-            
-            <h2>Прямая речь: экипаж и эксперты</h2>
-            <p style="margin-bottom:24px;">Оценки профессионалов, прошедших на T-Rex тысячи километров по Енисею и Арктике.</p>
-            
-            <div class="expert-grid">
-                <div class="expert-card">
-                    <h4>Игорь Спириденко</h4>
-                    <span class="role">Председатель Красноярского отделения РГО</span>
-                    <p>«Это судно показало себя блестяще. Мы прошли сложнейшие участки, где другие просто не рискнули бы идти. Надежность корпуса T-Rex стала залогом успеха всей экспедиции "Сибирский исследователь".»</p>
-                    <a href="https://www.rgo.ru/ru/krasnoyarsk/proekty/sibirskiy-issledovatel" target="_blank" class="source">Источник: РГО</a>
-                </div>
-                
-                <div class="expert-card">
-                    <h4>Александр Гончаров</h4>
-                    <span class="role">Капитан экспедиционного судна</span>
-                    <p>«В шторм на Енисее волна короткая и злая. T-Rex режет её, не сбавляя ход. Управляемость феноменальная для такого размера. Автономность позволила нам идти сутками без дозаправки.»</p>
-                    <a href="https://expert-club.online/news/v-krasnoyarsk-iz-saratova-pribudet-unikalnoe-ekspeditsionnoe-sudno" target="_blank" class="source">Источник: Expert Club</a>
-                </div>
-                
-                <div class="expert-card">
-                    <h4>Сергей Астахов</h4>
-                    <span class="role">Технический директор экспедиции</span>
-                    <p>«Алюминий АМГ5М — это не маркетинг, это жизнь. Мы несколько раз касались топляка на скорости. Пластик бы рассыпался, а здесь — ни вмятины. Инженерия на уровне военной приемки.»</p>
-                    <span class="source">Источник: Бортовой журнал</span>
-                </div>
-                
-                <div class="expert-card">
-                    <h4>Владимир Черников</h4>
-                    <span class="role">Велопутешественник, участник РГО</span>
-                    <p>«Комфорт внутри при -5 за бортом — это важно. Отопители справлялись, мы спали в тепле, готовили горячую еду. Это настоящий дом на воде, готовый к любой погоде.»</p>
-                    <a href="https://www.sibexplorer.ru/" target="_blank" class="source">Источник: SibExplorer</a>
                 </div>
             </div>
         </div>
@@ -2086,6 +2191,97 @@
                     // Нажимая “Отправить”, вы соглашаетесь на обратную связь от KARTEL Boats.
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- NEW RGO MISSION MODAL (From Report) -->
+    <div id="rgo_modal_full" class="modal">
+        <a href="#geography_map" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none" style="z-index: 2001; position: fixed;">
+            <div class="rgo-modal-dialog pointer-events-auto animate-modal-enter" style="margin: 24px auto;">
+                
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between px-6 py-4 border-b border-gray-800 bg-[#0A0A0A] px-4 py-3" style="display: flex; justify-content: space-between; align-items: center; background: #0a0a0a; border-bottom: 1px solid #222; padding: 16px 24px;">
+                    <div class="flex items-center gap-2" style="display: flex; gap: 12px; align-items: center;">
+                        <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%;"></span>
+                        <span style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Mission Status: <span style="color: #fff;">Active</span></span>
+                    </div>
+                    <a href="#geography_map" class="modal__close" aria-label="Закрыть">✕</a>
+                </div>
+
+                <!-- Modal Grid Content -->
+                <div class="rgo-modal-grid">
+                    
+                    <!-- Left Col: Ship Data -->
+                    <div class="rgo-col-left custom-scrollbar">
+                        <div class="aspect-video bg-gray-900 mb-6 relative overflow-hidden group" style="position: relative; margin-bottom: 24px;">
+                            <img src="assets/projects/rgo/rgo-hero.jpg" style="width: 100%; height: auto; display: block; border: 1px solid #333;" alt="Сибирский Исследователь">
+                            <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.8); color: var(--accent); padding: 4px 8px; font-size: 10px; text-transform: uppercase;">River-Sea Class</div>
+                        </div>
+
+                        <h4 style="color: #fff; font-size: 18px; margin-bottom: 16px; border-bottom: 1px solid #333; padding-bottom: 8px; text-transform: uppercase;">ТТХ ОБЪЕКТА</h4>
+                        
+                        <dl class="rgo-dl">
+                            <div class="rgo-dl-row"><dt class="rgo-dt">Верфь</dt> <dd class="rgo-dd">Корабельная артель (Саратов)</dd></div>
+                            <div class="rgo-dl-row"><dt class="rgo-dt">Длина / Материал</dt> <dd class="rgo-dd">18 м / Сталь 09Г2С</dd></div>
+                            <div class="rgo-dl-row"><dt class="rgo-dt">Автономность</dt> <dd class="rgo-dd">1300 миль (4 суток)</dd></div>
+                            <div class="rgo-dl-row"><dt class="rgo-dt">Усиление</dt> <dd class="rgo-dd rgo-dd-accent">Двойной киль (Ice Resistant)</dd></div>
+                            <div class="rgo-dl-row"><dt class="rgo-dt">Назначение</dt> <dd class="rgo-dd">Гидрография, Экология, БПЛА</dd></div>
+                        </dl>
+
+                        <div style="margin-top: 24px; padding: 16px; background: rgba(0,0,0,0.4); border: 1px solid #333; font-size: 12px; color: #888; line-height: 1.5;">
+                            <strong style="color: #fff; display: block; margin-bottom: 4px;">Справка оператора:</strong>
+                            Судно используется для комплексных экспедиций «Преображение Таймыра», включая археологическую разведку и экологический мониторинг с применением БПЛА.
+                        </div>
+                    </div>
+
+                    <!-- Right Col: Experts -->
+                    <div class="rgo-col-right custom-scrollbar">
+                        <h4 style="color: #fff; font-size: 18px; margin-bottom: 24px; border-bottom: 1px solid #333; padding-bottom: 8px; text-transform: uppercase;">ЭКСПЕРТНЫЙ СОВЕТ</h4>
+
+                        <div class="rgo-quotes">
+                            <blockquote class="rgo-quote">
+                                <p>«Запуск "Сибирского исследователя" — это уникальный проект, аналогов которому не было десятилетиями. Команда продумала мельчайшие детали, объединив науку и комфорт».</p>
+                                <footer class="rgo-author">
+                                    <div class="rgo-author-avatar"></div>
+                                    <div>
+                                        <div class="rgo-author-name">Алексей Немков</div>
+                                        <div class="rgo-author-role">Управление Губернатора Красноярского края</div>
+                                    </div>
+                                </footer>
+                            </blockquote>
+
+                            <blockquote class="rgo-quote">
+                                <p>«Особенность судна — защитные накладки, усиливающие киль вдвое. Это позволяет работать в условиях сложной навигации, недоступных для обычных яхт».</p>
+                                <footer class="rgo-author">
+                                    <div class="rgo-author-avatar"></div>
+                                    <div>
+                                        <div class="rgo-author-name">Юрий Лобунов</div>
+                                        <div class="rgo-author-role">Аналитик, Forbes Russia</div>
+                                    </div>
+                                </footer>
+                            </blockquote>
+
+                            <blockquote class="rgo-quote">
+                                <p>«Уникальное судно, балансирующее между низкими эксплуатационными расходами и высокой исследовательской емкостью. Построено так, чтобы сохранить экипаж в самых непредсказуемых водах Федерации».</p>
+                                <footer class="rgo-author">
+                                    <div class="rgo-author-avatar"></div>
+                                    <div>
+                                        <div class="rgo-author-name">Иннокентий Ершов</div>
+                                        <div class="rgo-author-role">Капитан дальнего плавания</div>
+                                    </div>
+                                </footer>
+                            </blockquote>
+                        </div>
+
+                        <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #555; font-size: 12px;">Оператор маршрутов: ООО «СЭТА»</span>
+                            <a href="https://www.sibexplorer.ru/" target="_blank" style="color: var(--accent); font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase;">Забронировать экспедицию →</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
