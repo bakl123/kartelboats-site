@@ -677,26 +677,6 @@
             text-transform: uppercase;
         }
 
-        #geography_map {
-            background: linear-gradient(180deg, var(--bg-main) 0%, #0a1014 100%);
-            text-align: center;
-        }
-
-        /* MAP INTERFACE UPDATED: Real map background, cleaned points */
-        .map-interface {
-            margin-top: 60px;
-            height: 420px;
-            border: var(--border-thin);
-            position: relative;
-            overflow: hidden;
-            background-image: 
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.85)),
-                url('kartel-explorer-map.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
         /* ROUTE STORIES STYLES */
         .route-stories {
             margin-top: 48px;
@@ -803,6 +783,7 @@
             position: fixed; inset: 0; z-index: 2000;
             display: none;
         }
+        /* UNIVERSAL MODAL OPENER */
         .modal:target { display: block; }
 
         .modal__overlay {
@@ -961,9 +942,6 @@
             .media-nav--next { right: 8px; }
         }
 
-        /* show modal when anchor is targeted */
-        #testdrive_modal:target ~ .testdrive-modal { display: block; }
-
         /* Form styles */
         .kb-form{ margin-top: 18px; }
 
@@ -1050,6 +1028,455 @@
             color: #fff; 
             margin-right: 8px; 
         }
+        
+        /* BROCHURE BUTTON STYLES */
+        .btn-brochure {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+            /* Removed global width: 100% per request */
+            width: auto; 
+        }
+
+        .btn-brochure:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .pdf-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            background: #fff;
+            color: #000;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+        
+        .modal__content-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        
+        /* New Styles for brochure button in gallery */
+        .modal__media-actions{
+          margin-top: 14px;
+          display:flex;
+          justify-content:flex-start;
+        }
+
+        .btn-brochure--gallery{
+          width: auto;                /* НЕ 100% */
+          padding: 12px 18px;
+          border: 1px solid rgba(255,255,255,0.18);
+          background: rgba(0,0,0,0.35);
+        }
+
+        .btn-brochure--gallery:hover{
+          border-color: var(--accent);
+          transform: translateY(-2px);
+        }
+
+        .btn-brochure .pdf-size{
+          margin-left: 10px;
+          color:#888;
+          font-size:11px;
+        }
+        
+        /* ИСПРАВЛЕНО: Кнопка стоимости снова широкая и заметная */
+        .modal__content-actions .btn { 
+            width: 100%; 
+            max-width: 420px;
+            justify-content: center;
+        }
+        
+        /* Explicitly target only the primary button in content actions for full width */
+        .modal__content-actions .btn-primary { 
+            width: 100%; 
+        }
+
+        /* Mobile adjustment for brochure button */
+        @media (min-width: 600px) {
+           .btn-brochure {
+               width: auto;
+           }
+           .modal__content-actions {
+               flex-direction: row;
+               align-items: center;
+           }
+        }
+
+        /* EXPERT CARD STYLES */
+        .expert-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr;
+        }
+        @media(min-width: 768px) {
+            .expert-grid { grid-template-columns: 1fr 1fr; }
+        }
+        
+        .expert-card {
+            background: #111;
+            border: var(--border-thin);
+            padding: 20px;
+        }
+        .expert-card h4 {
+            color: var(--accent);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        .expert-card .role {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 12px;
+            display: block;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .expert-card p {
+            font-size: 14px;
+            color: #ddd;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .expert-card .source {
+            font-size: 11px;
+            color: #555;
+            text-decoration: none;
+            border-bottom: 1px dotted #555;
+        }
+        .expert-card .source:hover { color: #888; border-color: #888; }
+        
+        /* --- RGO SECTION REDESIGN v2.0 (DEEP RESEARCH PATCH) --- */
+
+        /* 1. GPU Acceleration Hack for Safari Blur */
+        .gpu-accelerated {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        /* 2. Brutal Glass Panel Style */
+        .glass-panel-rgo {
+            background: rgba(15, 15, 15, 0.75);
+            /* WebKit prefix first is critical for legacy Safari */
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            backdrop-filter: blur(16px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid var(--accent);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.9);
+            position: relative;
+            overflow: hidden;
+            padding: 32px 40px;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        .glass-panel-rgo:hover {
+            transform: translateY(-4px);
+        }
+
+        /* 3. Noise Texture Overlay (Prevents banding on glass) */
+        .glass-panel-rgo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* RGO Section Structure */
+        #geography_map {
+            position: relative;
+            min-height: 85vh;
+            background-color: #050505;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+        }
+
+        .map-bg-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .map-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            filter: grayscale(100%) contrast(1.25);
+        }
+
+        /* Gradients for text readability */
+        .map-gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, #000 0%, transparent 50%, #000 100%);
+        }
+        .map-gradient-bottom {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #000 0%, transparent 40%);
+        }
+
+        .map-content-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: var(--container-width);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        @media (min-width: 900px) {
+            .map-content-wrapper {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+            }
+        }
+
+        .map-label {
+            display: none;
+        }
+        
+        @media (min-width: 900px) {
+            .map-label {
+                display: block;
+                margin-bottom: 32px;
+            }
+            .map-label h3 {
+                color: rgba(255,255,255,0.4);
+                font-size: 14px;
+                letter-spacing: 0.3em;
+            }
+            .map-label-line {
+                height: 64px;
+                width: 1px;
+                background-color: rgba(255,255,255,0.2);
+                margin-top: 16px;
+            }
+        }
+
+        .rgo-panel-wrapper {
+            width: 100%;
+            max-width: 640px;
+        }
+
+        .rgo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .rgo-badge {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* NEW LOGO STYLE FOR MAP PANEL */
+        .rgo-logo-small {
+            height: 52px;
+            width: auto;
+            display: block;
+            /* Monochromatic filter for brutal look, remove if color preferred */
+            filter: grayscale(1) brightness(1.2); 
+            transition: var(--transition);
+        }
+        
+        .rgo-logo-small:hover {
+            filter: grayscale(0) brightness(1);
+        }
+
+        .rgo-status-text {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .rgo-est {
+            color: rgba(255,255,255,0.3);
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .rgo-title-large {
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .rgo-desc {
+            color: #d1d5db;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            border-left: 1px solid rgba(255,255,255,0.1);
+            padding-left: 16px;
+        }
+
+        .rgo-actions-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* Modal Animation Helpers */
+        @keyframes modalEnter {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .animate-modal-enter {
+            animation: modalEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* RGO Modal Specifics */
+        .rgo-modal-dialog {
+            background: #111;
+            width: 100%;
+            max-width: 1024px;
+            height: 90vh; /* Fixed height for scroll inside */
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        @media (min-width: 900px) {
+            .rgo-modal-dialog {
+                height: auto;
+                max-height: 85vh;
+            }
+        }
+
+        .rgo-modal-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        @media (min-width: 900px) {
+            .rgo-modal-grid {
+                grid-template-columns: 5fr 7fr;
+                overflow: hidden;
+            }
+            .rgo-col-left {
+                border-right: 1px solid #333;
+                overflow-y: auto;
+            }
+            .rgo-col-right {
+                overflow-y: auto;
+            }
+        }
+
+        .rgo-col-left {
+            background: #161616;
+            padding: 32px;
+        }
+        .rgo-col-right {
+            background: #0a0a0a;
+            padding: 32px;
+        }
+
+        .rgo-dl {
+            display: grid;
+            gap: 12px;
+            font-size: 14px;
+        }
+        .rgo-dl-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #222;
+            padding-bottom: 8px;
+        }
+        .rgo-dt { color: #888; }
+        .rgo-dd { color: #fff; font-weight: 500; text-align: right; }
+        .rgo-dd-accent { color: var(--accent); }
+
+        .rgo-quote {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #333;
+            margin-bottom: 32px;
+            transition: border-color 0.3s;
+        }
+        .rgo-quote:hover { border-left-color: var(--accent); }
+        .rgo-quote p { font-style: italic; color: #ccc; margin-bottom: 12px; font-size: 15px;}
+        
+        .rgo-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* UX STYLED AVATAR (NO IMAGE) */
+        .rgo-author-avatar {
+            width: 36px; 
+            height: 36px; 
+            background: transparent; 
+            border: 1px solid #444;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .rgo-author-name { color: #fff; font-weight: 700; font-size: 14px; line-height: 1.2; }
+        .rgo-author-role { color: #666; font-size: 10px; text-transform: uppercase; }
+
+        /* Custom Scrollbar for inner modal */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #333; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+
     </style>
 </head>
 <body>
@@ -1240,24 +1667,57 @@
             </div>
         </section>
 
-        <!-- GEOGRAPHY MAP (CLEANED + VIDEOS) -->
-        <section id="geography_map" class="section">
+        <!-- GEOGRAPHY MAP REDESIGN (OPTION C: COMMAND CENTER) -->
+        <section id="geography_map">
+            <!-- Background Layers -->
+            <div class="map-bg-layer">
+                <img src="kartel-explorer-map.jpg" class="map-img" alt="Карта экспедиций">
+                <div class="map-gradient-overlay"></div>
+                <div class="map-gradient-bottom"></div>
+            </div>
+
+            <div class="map-content-wrapper">
+                <!-- Decorative Label -->
+                <div class="map-label">
+                    <h3>GEOGRAPHY</h3>
+                    <div class="map-label-line"></div>
+                </div>
+
+                <!-- Floating Glass Panel -->
+                <div class="rgo-panel-wrapper">
+                    <div class="glass-panel-rgo gpu-accelerated">
+                        <div class="rgo-header">
+                            <div class="rgo-badge">
+                                <!-- UPDATED: REAL RGO LOGO -->
+                                <img src="assets/partners/rgo/rgo-logo.png" alt="РГО" class="rgo-logo-small">
+                                <span class="rgo-status-text">Стратегическое Партнерство</span>
+                            </div>
+                            <div class="rgo-est">EST. 1845</div>
+                        </div>
+
+                        <h2 class="rgo-title-large">ФЛАГМАН «СИБИРСКИЙ ИССЛЕДОВАТЕЛЬ»</h2>
+                        
+                        <p class="rgo-desc">
+                            18-метровый стальной титан класса «река-море». Создан на тех же стапелях, что и флот KARTEL, для выполнения миссий Русского географического общества в высоких широтах Арктики.
+                        </p>
+
+                        <div class="rgo-actions-row">
+                            <a href="#rgo_modal_full" class="btn btn-primary" style="font-size: 12px; letter-spacing: 0.08em;">
+                                ОТКРЫТЬ ДОСЬЕ МИССИИ
+                            </a>
+                            
+                            <a href="https://www.rgo.ru/ru/krasnoyarsk/proekty/sibirskiy-issledovatel" target="_blank" rel="noopener" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.2); color: #fff;">
+                                RGO.RU
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section style="padding: 40px 0; border-bottom: 1px solid #111;">
             <div class="container">
-                <span class="mono">// EXPLORER</span>
-                <h2>Ваша география не ограничена</h2>
-                <p style="margin: 0 auto;">
-                    От шлюзов Москвы до штормов Ладоги и экспедиций на Байкал.
-                    Автономность до 1200 км открывает маршруты, недоступные для большинства яхт.
-                </p>
-
-                <div class="map-interface">
-                    <!-- Points removed for cleaner look -->
-                </div>
-
-                <div style="margin-top: 40px;">
-                    <a href="#route_stories" class="btn btn-secondary">Истории маршрутов</a>
-                </div>
-
+                <a href="#route_stories" class="btn btn-secondary">Истории маршрутов</a>
                 <!-- NEW ROUTE STORIES BLOCK -->
                 <div id="route_stories" class="route-stories">
                     <div class="route-card">
@@ -1282,6 +1742,7 @@
                 </div>
             </div>
         </section>
+
     </main>
 
     <!-- FOOTER CTA -->
@@ -1302,8 +1763,9 @@
         </div>
     </footer>
 
-    <!-- ANCHOR FOR TEST DRIVE MODAL -->
-    <a id="testdrive_modal" class="anchor"></a>
+    <!-- ANCHORS FOR RGO MODALS -->
+    <a id="rgo_routes_modal" class="anchor"></a>
+    <a id="rgo_experts_modal" class="anchor"></a>
 
     <!-- MODAL -->
     <div id="shipyard_modal" class="modal">
@@ -1393,6 +1855,12 @@
                         <a href="#flybridge_img6" class="modal__thumbLink"><img class="modal__thumb" src="images/flybridge/T-Rex44_bathroom_shower-comfort_01_4K.jpg" alt="Bathroom"></a>
                     </div>
                     <div class="mono" style="margin-top:12px; color:#666;">// Exterior / Interior</div>
+                    
+                    <div class="modal__media-actions">
+                        <a href="assets/brochures/flybridge/t-rex-fly-44.pdf" target="_blank" rel="noopener" class="btn-brochure btn-brochure--gallery">
+                            <span class="pdf-badge">PDF</span> Скачать буклет <span class="pdf-size">~5 МБ</span>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Text/Specs Column -->
@@ -1425,8 +1893,8 @@
                         </ul>
                     </div>
 
-                    <div style="margin-top: 24px;">
-                        <a href="#testdrive_modal" class="btn btn-primary" style="width: 100%;">Запросить стоимость</a>
+                    <div class="modal__content-actions">
+                        <a href="#testdrive_modal" class="btn btn-primary">Запросить стоимость</a>
                     </div>
 
                 </div>
@@ -1464,6 +1932,12 @@
                         <a href="#cruiser_img6" class="modal__thumbLink"><img class="modal__thumb" src="images/cruiser/TRex44CR_07_Stealth_Storm_Run.jpg" alt="Storm Run"></a>
                     </div>
                     <div class="mono" style="margin-top:12px; color:#666;">// Exterior / Interior</div>
+
+                    <div class="modal__media-actions">
+                        <a href="assets/brochures/cruiser/t-rex-cruiser-44.pdf" target="_blank" rel="noopener" class="btn-brochure btn-brochure--gallery">
+                            <span class="pdf-badge">PDF</span> Скачать буклет <span class="pdf-size">~5 МБ</span>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Text/Specs Column -->
@@ -1484,8 +1958,8 @@
                         </ul>
                     </div>
 
-                    <div style="margin-top: 24px;">
-                        <a href="#testdrive_modal" class="btn btn-primary" style="width: 100%;">Запросить стоимость</a>
+                    <div class="modal__content-actions">
+                        <a href="#testdrive_modal" class="btn btn-primary">Запросить стоимость</a>
                     </div>
 
                 </div>
@@ -1493,181 +1967,99 @@
         </div>
     </div>
 
-    <!-- LIGHTBOX MODALS FOR SHIPYARD IMAGES -->
-    <div id="shipyard_img_1" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_salon_goldenhour_06_4K.jpg" alt="Салон: панорамный свет, тёплый маршрут">
-            <a href="#shipyard_img_2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+    <!-- NEW RGO MISSION MODAL (From Report) -->
+    <div id="rgo_modal_full" class="modal">
+        <a href="#geography_map" class="modal__overlay" aria-label="Закрыть"></a>
+        <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none" style="z-index: 2001; position: fixed;">
+            <div class="rgo-modal-dialog pointer-events-auto animate-modal-enter" style="margin: 24px auto;">
+                
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between px-6 py-4 border-b border-gray-800 bg-[#0A0A0A] px-4 py-3" style="display: flex; justify-content: space-between; align-items: center; background: #0a0a0a; border-bottom: 1px solid #222; padding: 16px 24px;">
+                    <div class="flex items-center gap-2" style="display: flex; gap: 12px; align-items: center;">
+                        <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%;"></span>
+                        <span style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Mission Status: <span style="color: #fff;">Active</span></span>
+                    </div>
+                    <a href="#geography_map" class="modal__close" aria-label="Закрыть">✕</a>
+                </div>
+
+                <!-- Modal Grid Content -->
+                <div class="rgo-modal-grid">
+                    
+                    <!-- Left Col: Ship Data -->
+                    <div class="rgo-col-left custom-scrollbar">
+                        <div class="aspect-video bg-gray-900 mb-6 relative overflow-hidden group" style="position: relative; margin-bottom: 24px;">
+                            <img src="assets/projects/rgo/rgo-hero.jpg" style="width: 100%; height: auto; display: block; border: 1px solid #333;" alt="Сибирский Исследователь">
+                            <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.8); color: var(--accent); padding: 4px 8px; font-size: 10px; text-transform: uppercase;">River-Sea Class</div>
+                        </div>
+
+                        <h4 style="color: #fff; font-size: 18px; margin-bottom: 16px; border-bottom: 1px solid #333; padding-bottom: 8px; text-transform: uppercase;">ТТХ ОБЪЕКТА</h4>
+                        
+                        <dl class="rgo-dl">
+                            <div class="rgo-dl-row"><dt class="rgo-dt">Верфь</dt> <dd class="rgo-dd">Корабельная артель (Саратов)</dd></div>
+                            <div class="rgo-dl-row"><dt class="rgo-dt">Длина / Материал</dt> <dd class="rgo-dd">18 м / Сталь 09Г2С</dd></div>
+                            <div class="rgo-dl-row"><dt class="rgo-dt">Автономность</dt> <dd class="rgo-dd">1300 миль (4 суток)</dd></div>
+                            <div class="rgo-dl-row"><dt class="rgo-dt">Усиление</dt> <dd class="rgo-dd rgo-dd-accent">Двойной киль (Ice Resistant)</dd></div>
+                            <div class="rgo-dl-row"><dt class="rgo-dt">Назначение</dt> <dd class="rgo-dd">Гидрография, Экология, БПЛА</dd></div>
+                        </dl>
+
+                        <div style="margin-top: 24px; padding: 16px; background: rgba(0,0,0,0.4); border: 1px solid #333; font-size: 12px; color: #888; line-height: 1.5;">
+                            <strong style="color: #fff; display: block; margin-bottom: 4px;">Справка оператора:</strong>
+                            Судно используется для комплексных экспедиций «Преображение Таймыра», включая археологическую разведку и экологический мониторинг с применением БПЛА.
+                        </div>
+                    </div>
+
+                    <!-- Right Col: Experts -->
+                    <div class="rgo-col-right custom-scrollbar">
+                        <h4 style="color: #fff; font-size: 18px; margin-bottom: 24px; border-bottom: 1px solid #333; padding-bottom: 8px; text-transform: uppercase;">ЭКСПЕРТНЫЙ СОВЕТ</h4>
+
+                        <div class="rgo-quotes">
+                            <blockquote class="rgo-quote">
+                                <p>«Запуск "Сибирского исследователя" — это уникальный проект, аналогов которому не было десятилетиями. Команда продумала мельчайшие детали, объединив науку и комфорт».</p>
+                                <footer class="rgo-author">
+                                    <div class="rgo-author-avatar">АН</div>
+                                    <div>
+                                        <div class="rgo-author-name">Алексей Немков</div>
+                                        <div class="rgo-author-role">Управление Губернатора Красноярского края</div>
+                                    </div>
+                                </footer>
+                            </blockquote>
+
+                            <blockquote class="rgo-quote">
+                                <p>«Особенность судна — защитные накладки, усиливающие киль вдвое. Это позволяет работать в условиях сложной навигации, недоступных для обычных яхт».</p>
+                                <footer class="rgo-author">
+                                    <div class="rgo-author-avatar">ЮЛ</div>
+                                    <div>
+                                        <div class="rgo-author-name">Юрий Лобунов</div>
+                                        <div class="rgo-author-role">Аналитик, Forbes Russia</div>
+                                    </div>
+                                </footer>
+                            </blockquote>
+
+                            <blockquote class="rgo-quote">
+                                <p>«Уникальное судно, балансирующее между низкими эксплуатационными расходами и высокой исследовательской емкостью. Построено так, чтобы сохранить экипаж в самых непредсказуемых водах Федерации».</p>
+                                <footer class="rgo-author">
+                                    <div class="rgo-author-avatar">ИЕ</div>
+                                    <div>
+                                        <div class="rgo-author-name">Иннокентий Ершов</div>
+                                        <div class="rgo-author-role">Капитан дальнего плавания</div>
+                                    </div>
+                                </footer>
+                            </blockquote>
+                        </div>
+
+                        <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: #555; font-size: 12px;">Оператор маршрутов: ООО «СЭТА»</span>
+                            <a href="https://www.sibexplorer.ru/" target="_blank" style="color: var(--accent); font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase;">Забронировать экспедицию →</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
-    <div id="shipyard_img_2" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44_salon_helm_warm-route_07_4K.jpg" alt="Пост управления: навигация и контроль">
-            <a href="#shipyard_img_3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <div id="shipyard_img_3" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Нижняя каюта: уют и тишина">
-            <a href="#shipyard_img_4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <div id="shipyard_img_4" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44_guest_bathroom_spa-details_02_4K.jpg" alt="Санузел: детали и материалы">
-            <a href="#shipyard_img_5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <div id="shipyard_img_5" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_shower_zone_12_4K.jpg" alt="Душевая зона: камень, металл, тепло">
-            <a href="#shipyard_img_6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <div id="shipyard_img_6" class="modal modal--media">
-        <a href="#shipyard_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#shipyard_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#shipyard_img_5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/shipyard/T-Rex44Cruiser_engine-room_clean_13_4K.jpg" alt="Техотсек: аккуратная силовая сборка">
-            <a href="#shipyard_img_1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <!-- LIGHTBOX MODALS FOR FLYBRIDGE IMAGES -->
-    <div id="flybridge_img1" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44Fly_FRONT_RUNNING_LUX.jpg" alt="Front Running">
-            <a href="#flybridge_img2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="flybridge_img2" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44Fly_01_STERN_LUX_MARINA_16x9_4K.jpg" alt="Stern Marina">
-            <a href="#flybridge_img3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="flybridge_img3" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44Fly_04_GOLDEN_STORM_CHARGE.jpg" alt="Storm Charge">
-            <a href="#flybridge_img4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="flybridge_img4" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44_master-cabin_boutique-suite_03_4K.jpg" alt="Master Cabin">
-            <a href="#flybridge_img5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="flybridge_img5" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44_lower-cabin_family-cozy_04_4K.jpg" alt="Lower Cabin">
-            <a href="#flybridge_img6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="flybridge_img6" class="modal modal--media">
-        <a href="#flybridge_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#flybridge_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#flybridge_img5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/flybridge/T-Rex44_bathroom_shower-comfort_01_4K.jpg" alt="Bathroom">
-            <a href="#flybridge_img1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <!-- LIGHTBOX MODALS FOR CRUISER IMAGES -->
-    <div id="cruiser_img1" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img6" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/TRex44CR_01_Aft_Terrace_Sunset.jpg" alt="Aft Terrace">
-            <a href="#cruiser_img2" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="cruiser_img2" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img1" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/TRex44CR_02_Marina_Lounge.jpg" alt="Marina Lounge">
-            <a href="#cruiser_img3" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="cruiser_img3" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img2" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_cockpit_river-view_03_4K.jpg" alt="Cockpit View">
-            <a href="#cruiser_img4" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="cruiser_img4" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img3" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_mastercabin_evening_05_4K.jpg" alt="Master Cabin">
-            <a href="#cruiser_img5" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="cruiser_img5" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img4" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/T-Rex44Cruiser_bathroom_portlights_09_4K.jpg" alt="Bathroom">
-            <a href="#cruiser_img6" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-    <div id="cruiser_img6" class="modal modal--media">
-        <a href="#cruiser_modal" class="modal__overlay" aria-label="Закрыть"></a>
-        <div class="modal__dialog modal__dialog--media">
-            <a href="#cruiser_modal" class="modal__close--media" aria-label="Закрыть">✕</a>
-            <a href="#cruiser_img5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
-            <img class="modal__media" src="images/cruiser/TRex44CR_07_Stealth_Storm_Run.jpg" alt="Storm Run">
-            <a href="#cruiser_img1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
-        </div>
-    </div>
-
-    <!-- TEST DRIVE MODAL -->
-    <div class="modal testdrive-modal">
+    <!-- TEST DRIVE MODAL (FIXED - MOVED TO END & UPDATED ID) -->
+    <div id="testdrive_modal" class="modal">
         <a href="#footer_cta" class="modal__overlay" aria-label="Закрыть"></a>
 
         <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Запрос на тест-драйв">
