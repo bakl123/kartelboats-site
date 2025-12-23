@@ -783,6 +783,7 @@
             position: fixed; inset: 0; z-index: 2000;
             display: none;
         }
+        /* UNIVERSAL MODAL OPENER */
         .modal:target { display: block; }
 
         .modal__overlay {
@@ -940,9 +941,6 @@
             .media-nav--prev { left: 8px; }
             .media-nav--next { right: 8px; }
         }
-
-        /* show modal when anchor is targeted */
-        #testdrive_modal:target ~ .testdrive-modal { display: block; }
 
         /* Form styles */
         .kb-form{ margin-top: 18px; }
@@ -1765,9 +1763,6 @@
         </div>
     </footer>
 
-    <!-- ANCHOR FOR TEST DRIVE MODAL -->
-    <a id="testdrive_modal" class="anchor"></a>
-    
     <!-- ANCHORS FOR RGO MODALS -->
     <a id="rgo_routes_modal" class="anchor"></a>
     <a id="rgo_experts_modal" class="anchor"></a>
@@ -2060,6 +2055,70 @@
 
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- TEST DRIVE MODAL (FIXED - MOVED TO END & UPDATED ID) -->
+    <div id="testdrive_modal" class="modal">
+        <a href="#footer_cta" class="modal__overlay" aria-label="Закрыть"></a>
+
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Запрос на тест-драйв">
+            <div class="modal__header">
+                <div class="mono">// TEST DRIVE REQUEST</div>
+                <a href="#footer_cta" class="modal__close" aria-label="Закрыть">✕</a>
+            </div>
+
+            <h2>Запрос на тест-драйв</h2>
+            <p>Оставьте контакты — мы свяжемся и согласуем модель, локацию и удобное время. Быстро. По делу. Без спама.</p>
+
+            <!-- FORM (UI) -->
+            <form class="kb-form" action="https://formsubmit.co/REPLACE_ME" method="POST">
+                <input type="hidden" name="_subject" value="KARTEL | Запрос на тест-драйв">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="kb-grid">
+                    <div class="kb-field">
+                        <label for="kb_phone">Телефон</label>
+                        <input id="kb_phone" name="phone" type="tel" placeholder="+7 ___ ___-__-__" required>
+                    </div>
+
+                    <div class="kb-field">
+                        <label for="kb_email">Email</label>
+                        <input id="kb_email" name="email" type="email" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="kb-field kb-span-2">
+                        <label for="kb_model">Интересующая модель</label>
+                        <select id="kb_model" name="model" required>
+                            <option value="" disabled selected>Выберите модель</option>
+                            <option>T-Rex Flybridge</option>
+                            <option>T-Rex Cruiser</option>
+                            <option>T-Rex Egoist</option>
+                            <option>T-Rex Family</option>
+                            <option>T-Rex Specialist</option>
+                        </select>
+                    </div>
+
+                    <div class="kb-field kb-span-2">
+                        <label>Способ связи</label>
+                        <div class="kb-radio">
+                            <label><input type="radio" name="contact_method" value="Звонок" checked> Звонок</label>
+                            <label><input type="radio" name="contact_method" value="WhatsApp"> WhatsApp</label>
+                            <label><input type="radio" name="contact_method" value="Telegram"> Telegram</label>
+                            <label><input type="radio" name="contact_method" value="Email"> Email</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kb-actions">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                    <a href="#footer_cta" class="btn btn-secondary">Закрыть</a>
+                </div>
+
+                <div class="kb-note mono" style="color:#555; margin-top:14px;">
+                    // Нажимая “Отправить”, вы соглашаетесь на обратную связь от KARTEL Boats.
+                </div>
+            </form>
         </div>
     </div>
 
