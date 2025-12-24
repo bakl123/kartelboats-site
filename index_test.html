@@ -7,7 +7,7 @@
     <meta name="description" content="KARTEL Boats: алюминиевые экспедиционные яхты класса Brutal Luxury линейки T-Rex. Производство в Саратове, офис в Москве.">
     
     <style>
-        /* KARTEL BOATS DESIGN SYSTEM v1.5 (Restored & Fixed) */
+        /* KARTEL BOATS DESIGN SYSTEM v1.6 (Mobile Fixed) */
 
         :root {
             --bg-main: #000000;
@@ -24,6 +24,14 @@
             --border-thin: 1px solid #333333;
             --border-accent: 1px solid var(--accent);
             --transition: all 0.3s ease;
+        }
+
+        /* Mobile specific adjustments for root variables */
+        @media (max-width: 768px) {
+            :root {
+                --spacing-section: 80px;
+                --spacing-card: 16px;
+            }
         }
 
         * {
@@ -48,13 +56,13 @@
         }
 
         h1 {
-            font-size: clamp(32px, 5vw, 64px);
+            font-size: clamp(36px, 8vw, 64px); /* Adjusted clamp for better mobile scaling */
             line-height: 1.1;
             margin-bottom: 24px;
         }
 
         h2 {
-            font-size: clamp(24px, 3vw, 40px);
+            font-size: clamp(28px, 5vw, 40px);
             margin-bottom: 16px;
             color: var(--text-main);
         }
@@ -103,6 +111,7 @@
             cursor: pointer;
             font-size: 14px;
             border-radius: 0;
+            white-space: nowrap; /* Prevent text wrapping inside buttons */
         }
 
         .btn-primary {
@@ -162,7 +171,7 @@
         /* LOGO SIZE (KEPT LARGE) */
         .logo-mark {
             display: block;
-            height: 104px; /* Large desktop size */
+            height: 80px; /* Adjusted for better fit */
             width: auto;
         }
 
@@ -193,9 +202,27 @@
             font-size: 12px;
         }
 
+        /* MOBILE MENU STYLES (Simple horizontal scroll or stack) */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none; /* Hidden on mobile by default to save space, keeping logo and CTA */
+            }
+            .nav-container {
+                padding: 10px 20px;
+                min-height: 60px;
+            }
+            .logo-mark {
+                height: 50px;
+            }
+            .nav-cta {
+                padding: 8px 16px;
+                margin-left: auto; /* Push to right */
+            }
+        }
+
         #hero_video {
             height: 100vh;
-            min-height: 600px;
+            min-height: 550px;
             position: relative;
             display: flex;
             align-items: center;
@@ -285,11 +312,12 @@
             z-index: 2; /* Ensure content is above overlay */
             text-align: center;
             padding: 0 20px;
+            width: 100%;
         }
 
         .hero-sub {
             display: block;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             font-size: 14px;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -298,7 +326,7 @@
 
         /* HERO TEXT STYLE RESET (Clean text, no glass) */
         .hero-lead {
-            margin: 0 auto 40px auto;
+            margin: 0 auto 32px auto;
             max-width: 700px;
             color: var(--text-muted);
             font-size: 16px;
@@ -312,10 +340,14 @@
             justify-content: center;
             margin-top: 32px;
         }
-
-        @media (min-width: 768px) {
+        
+        @media (max-width: 480px) {
             .hero-actions {
-                justify-content: center; /* Center on desktop too for hero balance */
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .hero-actions .btn {
+                width: 100%;
             }
         }
 
@@ -365,6 +397,9 @@
             .card-medium { grid-column: span 5; }
             .card-small { grid-column: span 12; display: flex; flex-direction: row; align-items: center; justify-content: space-between; min-height: 200px;}
         }
+        
+        /* Mobile: Keep cards single column by default (span 12) */
+        .card-medium { grid-column: span 12; }
 
         .card-bg {
             position: absolute;
@@ -631,12 +666,15 @@
         /* UPDATED SPLIT MEDIA FOR VIDEO */
         .split-media {
             background-color: #000;
-            min-height: 400px;
+            min-height: 300px; /* Reduced for mobile */
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+        }
+        @media(min-width: 768px) {
+            .split-media { min-height: 400px; }
         }
         
         .dna-video {
@@ -648,11 +686,14 @@
         }
 
         .split-content {
-            padding: 64px 48px;
+            padding: 40px 24px; /* Reduced padding on mobile */
             background-color: var(--bg-card);
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+        @media(min-width: 768px) {
+            .split-content { padding: 64px 48px; }
         }
 
         .stat-grid {
@@ -727,20 +768,21 @@
         }
 
         footer {
-            padding: 80px 0 40px;
+            padding: 60px 0 40px; /* Reduced padding mobile */
             background-color: var(--bg-card);
             border-top: 1px solid #333;
             text-align: center;
         }
         
         .footer-cta-block {
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
         
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 32px;
+            flex-wrap: wrap; /* Allow wrap on mobile */
+            gap: 24px 32px;
             font-size: 12px;
             text-transform: uppercase;
             color: var(--text-muted);
@@ -748,35 +790,6 @@
         
         .footer-links a { color: var(--text-muted); text-decoration: none; }
         .footer-links a:hover { color: var(--accent); }
-
-        /* UPDATED MOBILE MEDIA QUERY */
-        @media (max-width: 767px) {
-            .nav-container {
-                gap: 12px;
-                min-height: 60px; /* Reduced mobile height */
-                padding: 4px 16px;
-            }
-            
-            /* Stack navigation or hide on mobile (simple stack for now) */
-            .nav-links {
-                display: none; /* Hide nav links on mobile for simplicity in this iteration */
-            }
-            
-            /* Show CTA on mobile if needed, or keep hidden */
-            
-            .btn {
-                padding: 10px 18px;
-                font-size: 11px;
-            }
-            .section {
-                padding: 80px 0;
-            }
-            
-            /* Mobile logo adjustment */
-            .logo-mark {
-                height: 48px; /* Final mobile size */
-            }
-        }
 
         /* MODAL STYLES */
         .modal {
@@ -794,13 +807,16 @@
 
         .modal__dialog {
             position: relative;
-            width: min(1080px, calc(100% - 32px));
-            max-height: calc(100% - 48px);
-            margin: 24px auto;
+            width: min(1080px, calc(100% - 24px)); /* Adjust for mobile margins */
+            max-height: calc(100% - 40px);
+            margin: 20px auto;
             background: #0b0b0b;
             border: var(--border-thin);
             overflow: auto;
-            padding: 24px;
+            padding: 20px; /* Reduced mobile padding */
+        }
+        @media(min-width: 768px) {
+            .modal__dialog { padding: 24px; margin: 24px auto; max-height: calc(100% - 48px); width: min(1080px, calc(100% - 32px)); }
         }
 
         .modal__header{
@@ -832,7 +848,10 @@
         .modal__gallery{
             display: grid;
             gap: 12px;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+        }
+        @media(min-width: 600px) {
+            .modal__gallery{ grid-template-columns: repeat(3, 1fr); }
         }
         
         .modal__thumb{
@@ -1187,9 +1206,12 @@
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.9);
             position: relative;
             overflow: hidden;
-            padding: 32px 40px;
+            padding: 24px; /* Reduced for mobile */
             border-radius: 2px;
             transition: var(--transition);
+        }
+        @media(min-width: 768px) {
+            .glass-panel-rgo { padding: 32px 40px; }
         }
         
         .glass-panel-rgo:hover {
@@ -1216,7 +1238,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 80px 20px;
+            padding: 60px 20px; /* Reduced for mobile */
         }
 
         .map-bg-layer {
@@ -1306,12 +1328,15 @@
 
         /* NEW LOGO STYLE FOR MAP PANEL */
         .rgo-logo-small {
-            height: 52px;
+            height: 40px; /* Smaller mobile logo */
             width: auto;
             display: block;
             /* Monochromatic filter for brutal look, remove if color preferred */
             filter: grayscale(1) brightness(1.2); 
             transition: var(--transition);
+        }
+        @media(min-width: 768px) {
+            .rgo-logo-small { height: 52px; }
         }
         
         .rgo-logo-small:hover {
@@ -1320,11 +1345,12 @@
 
         .rgo-status-text {
             color: var(--accent);
-            font-size: 12px;
+            font-size: 10px; /* Smaller mobile text */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
+        @media(min-width: 768px) { .rgo-status-text { font-size: 12px; } }
 
         .rgo-est {
             color: rgba(255,255,255,0.3);
@@ -1333,7 +1359,7 @@
         }
 
         .rgo-title-large {
-            font-size: clamp(28px, 4vw, 42px);
+            font-size: clamp(24px, 5vw, 42px);
             line-height: 1;
             margin-bottom: 16px;
             color: #fff;
@@ -1346,12 +1372,21 @@
             margin-bottom: 32px;
             border-left: 1px solid rgba(255,255,255,0.1);
             padding-left: 16px;
+            font-size: 14px; /* Default for mobile */
         }
+        @media(min-width: 768px) { .rgo-desc { font-size: 16px; } }
 
         .rgo-actions-row {
             display: flex;
             flex-wrap: wrap;
             gap: 16px;
+        }
+        .rgo-actions-row .btn {
+            flex: 1; /* Stretch buttons on mobile */
+            text-align: center;
+        }
+        @media(min-width: 600px) {
+            .rgo-actions-row .btn { flex: initial; }
         }
 
         /* Modal Animation Helpers */
@@ -1406,11 +1441,14 @@
 
         .rgo-col-left {
             background: #161616;
-            padding: 32px;
+            padding: 24px;
         }
         .rgo-col-right {
             background: #0a0a0a;
-            padding: 32px;
+            padding: 24px;
+        }
+        @media(min-width: 768px) {
+            .rgo-col-left, .rgo-col-right { padding: 32px; }
         }
 
         .rgo-dl {
@@ -1579,6 +1617,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        @media(max-width: 768px) {
+            .radar-map-container { min-height: 300px; }
         }
 
         .radar-bg {
@@ -2563,6 +2605,70 @@
             <a href="#cruiser_img5" class="media-nav media-nav--prev" aria-label="Предыдущее фото">‹</a>
             <img class="modal__media" src="images/cruiser/TRex44CR_07_Stealth_Storm_Run.jpg" alt="Storm Run">
             <a href="#cruiser_img1" class="media-nav media-nav--next" aria-label="Следующее фото">›</a>
+        </div>
+    </div>
+
+    <!-- TEST DRIVE MODAL (FIXED - MOVED TO END & UPDATED ID) -->
+    <div id="testdrive_modal" class="modal">
+        <a href="#footer_cta" class="modal__overlay" aria-label="Закрыть"></a>
+
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Запрос на тест-драйв">
+            <div class="modal__header">
+                <div class="mono">// TEST DRIVE REQUEST</div>
+                <a href="#footer_cta" class="modal__close" aria-label="Закрыть">✕</a>
+            </div>
+
+            <h2>Запрос на тест-драйв</h2>
+            <p>Оставьте контакты — мы свяжемся и согласуем модель, локацию и удобное время. Быстро. По делу. Без спама.</p>
+
+            <!-- FORM (UI) -->
+            <form class="kb-form" action="https://formsubmit.co/REPLACE_ME" method="POST">
+                <input type="hidden" name="_subject" value="KARTEL | Запрос на тест-драйв">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="kb-grid">
+                    <div class="kb-field">
+                        <label for="kb_phone">Телефон</label>
+                        <input id="kb_phone" name="phone" type="tel" placeholder="+7 ___ ___-__-__" required>
+                    </div>
+
+                    <div class="kb-field">
+                        <label for="kb_email">Email</label>
+                        <input id="kb_email" name="email" type="email" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="kb-field kb-span-2">
+                        <label for="kb_model">Интересующая модель</label>
+                        <select id="kb_model" name="model" required>
+                            <option value="" disabled selected>Выберите модель</option>
+                            <option>T-Rex Flybridge</option>
+                            <option>T-Rex Cruiser</option>
+                            <option>T-Rex Egoist</option>
+                            <option>T-Rex Family</option>
+                            <option>T-Rex Specialist</option>
+                        </select>
+                    </div>
+
+                    <div class="kb-field kb-span-2">
+                        <label>Способ связи</label>
+                        <div class="kb-radio">
+                            <label><input type="radio" name="contact_method" value="Звонок" checked> Звонок</label>
+                            <label><input type="radio" name="contact_method" value="WhatsApp"> WhatsApp</label>
+                            <label><input type="radio" name="contact_method" value="Telegram"> Telegram</label>
+                            <label><input type="radio" name="contact_method" value="Email"> Email</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kb-actions">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                    <a href="#footer_cta" class="btn btn-secondary">Закрыть</a>
+                </div>
+
+                <div class="kb-note mono" style="color:#555; margin-top:14px;">
+                    // Нажимая “Отправить”, вы соглашаетесь на обратную связь от KARTEL Boats.
+                </div>
+            </form>
         </div>
     </div>
 
