@@ -7,7 +7,7 @@
     <meta name="description" content="KARTEL Boats: алюминиевые экспедиционные яхты класса Brutal Luxury линейки T-Rex. Производство в Саратове, офис в Москве.">
     
     <style>
-        /* KARTEL BOATS DESIGN SYSTEM v1.7 (Stable Grid Fix) */
+        /* KARTEL BOATS DESIGN SYSTEM v2.0 (Hybrid: Classic Desktop + Super Mobile) */
 
         :root {
             --bg-main: #000000;
@@ -26,7 +26,7 @@
             --transition: all 0.3s ease;
         }
 
-        /* Mobile specific adjustments */
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
             :root {
                 --spacing-section: 80px;
@@ -47,7 +47,10 @@
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            /* Padding for mobile bottom nav */
+            padding-bottom: 0; 
         }
+        @media (max-width: 767px) { body { padding-bottom: 70px; } }
 
         h1, h2, h3, h4, .btn-text {
             text-transform: uppercase;
@@ -56,13 +59,13 @@
         }
 
         h1 {
-            font-size: clamp(36px, 8vw, 64px);
+            font-size: clamp(36px, 6vw, 64px);
             line-height: 1.1;
             margin-bottom: 24px;
         }
 
         h2 {
-            font-size: clamp(28px, 5vw, 40px);
+            font-size: clamp(28px, 4vw, 40px);
             margin-bottom: 16px;
             color: var(--text-main);
         }
@@ -134,14 +137,18 @@
             color: var(--accent);
         }
 
-        /* HEADER */
+        /* HEADER (Restored Original Sizes) */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.60));
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.95),
+                rgba(0, 0, 0, 0.60)
+            );
             backdrop-filter: blur(10px);
             border-bottom: var(--border-thin);
         }
@@ -150,7 +157,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            min-height: 72px;
+            /* Restored Desktop Height */
+            min-height: 80px; 
             padding: 4px 20px;
         }
 
@@ -164,7 +172,8 @@
         
         .logo-mark {
             display: block;
-            height: 80px;
+            /* Restored Desktop Logo Size */
+            height: 104px; 
             width: auto;
         }
 
@@ -194,18 +203,56 @@
             font-size: 12px;
         }
 
-        /* MOBILE HEADER ADAPTATION */
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .nav-container { padding: 10px 20px; min-height: 60px; }
-            .logo-mark { height: 50px; }
-            .nav-cta { padding: 8px 16px; margin-left: auto; }
+        /* MOBILE HEADER OVERRIDES */
+        @media (max-width: 767px) {
+            .nav-container {
+                min-height: 60px; /* Smaller on mobile */
+                padding: 4px 16px;
+            }
+            .logo-mark {
+                height: 48px; /* Smaller on mobile */
+            }
+            .nav-links {
+                display: none; /* Hide standard nav on mobile */
+            }
         }
 
-        /* HERO SECTION */
+        /* MOBILE BOTTOM NAV (From Your Request) */
+        .mobile-nav {
+            display: none;
+        }
+        @media (max-width: 767px) {
+            .mobile-nav {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(10,10,10,0.95);
+                backdrop-filter: blur(10px);
+                border-top: 1px solid #333;
+                z-index: 2000;
+                padding: 12px 0;
+                padding-bottom: max(12px, env(safe-area-inset-bottom));
+            }
+            .mob-link {
+                color: #888;
+                text-decoration: none;
+                font-size: 10px;
+                text-transform: uppercase;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+            }
+            .mob-link.active { color: var(--accent); }
+        }
+
         #hero_video {
             height: 100vh;
-            min-height: 550px;
+            min-height: 600px;
             position: relative;
             display: flex;
             align-items: center;
@@ -248,25 +295,20 @@
         }
 
         .hero-content {
-            position: relative; z-index: 2; text-align: center; padding: 0 20px; width: 100%;
+            position: relative; z-index: 2; text-align: center; padding: 0 20px;
         }
 
         .hero-sub {
-            display: block; margin-bottom: 24px; font-size: 14px; letter-spacing: 0.1em;
+            display: block; margin-bottom: 32px; font-size: 14px; letter-spacing: 0.1em;
             text-transform: uppercase; color: var(--accent);
         }
 
         .hero-lead {
-            margin: 0 auto 32px auto; max-width: 700px; color: var(--text-muted); font-size: 16px; line-height: 1.6;
+            margin: 0 auto 40px auto; max-width: 700px; color: var(--text-muted); font-size: 16px; line-height: 1.6;
         }
 
         .hero-actions {
             display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 32px;
-        }
-        
-        @media (max-width: 480px) {
-            .hero-actions { flex-direction: column; align-items: stretch; }
-            .hero-actions .btn { width: 100%; }
         }
 
         .hero-cta-secondary {
@@ -277,7 +319,7 @@
             border-color: var(--accent); color: var(--accent);
         }
 
-        /* --- BENTO GRID FIX (CRITICAL) --- */
+        /* --- BENTO GRID RESTORED (CLASSIC PROPORTIONS) --- */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -295,8 +337,7 @@
             position: relative;
             text-decoration: none;
             transition: var(--transition);
-            /* Consistent Height Fix */
-            min-height: 400px; 
+            min-height: 300px; /* Restored original min-height */
             overflow: hidden;
         }
 
@@ -306,43 +347,36 @@
             background-color: var(--bg-card-hover);
         }
 
-        /* Default mobile behavior (full width) */
-        .card-large, .card-medium {
-            grid-column: span 12;
-        }
+        .card-large { grid-column: span 12; }
+        .card-medium { grid-column: span 12; }
         
-        /* Desktop grid logic restored */
         @media (min-width: 900px) {
+            /* Restored Asymmetric Grid */
             .card-large { grid-column: span 7; }
             .card-medium { grid-column: span 5; }
-            
-            /* Align heights perfectly on desktop */
-            .card {
-                height: 100%; 
-                min-height: 450px;
-            }
         }
 
         .card-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center;
-            opacity: 0.9; /* Improved visibility based on feedback */
+            background-size: cover; 
+            background-position: center; /* Ensures content fits well */
+            opacity: 0.3; /* Restored original opacity */
             transition: var(--transition); z-index: 0;
         }
         
-        .card:hover .card-bg { opacity: 1; transform: scale(1.02); }
+        .card:hover .card-bg { opacity: 0.5; transform: scale(1.02); }
 
         .bg-flybridge { 
-            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)), url('t-rex-flybridge-card.jpg'); 
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15)), url('t-rex-flybridge-card.jpg');
+            opacity: 0.9;
         }
         
         .bg-cruiser { 
-            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)), url('t-rex-cruiser-card.jpg'); 
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15)), url('t-rex-cruiser-card.jpg'); 
+            opacity: 0.9;
         }
         
-        .card-content {
-            position: relative; z-index: 2;
-        }
+        .card-content { position: relative; z-index: 2; }
 
         .badge {
             display: inline-block;
@@ -371,23 +405,17 @@
 
         .card-large .badge { background-color: var(--accent); color: #000; }
 
-        /* CONCEPT BANNER & SLIDER */
+        /* CONCEPT BANNER */
         .concept-ego-preview {
-            margin-top: 32px;
-            border: var(--border-thin);
-            background-color: #000;
-            overflow: hidden;
-            position: relative;
-            aspect-ratio: 16 / 9;
-            width: 100%;
+            margin-top: 32px; border: var(--border-thin); background-color: #000;
+            overflow: hidden; position: relative; aspect-ratio: 16 / 9; width: 100%;
         }
 
         .concept-ego-slider { position: absolute; inset: 0; }
 
         .concept-ego-slide {
             position: absolute; inset: 0; width: 100%; height: 100%;
-            object-fit: cover; display: block; opacity: 0;
-            animation: egoFade 15s infinite;
+            object-fit: cover; display: block; opacity: 0; animation: egoFade 15s infinite;
         }
 
         .concept-ego-slide:nth-child(1) { animation-delay: 0s; opacity: 1; }
@@ -416,10 +444,8 @@
         }
 
         .concept-card {
-            background-color: var(--bg-card);
-            border: var(--border-thin);
-            padding: 20px;
-            display: flex; flex-direction: column; gap: 8px;
+            background-color: var(--bg-card); border: var(--border-thin);
+            padding: 20px; display: flex; flex-direction: column; gap: 8px;
         }
 
         .concept-card h3 { margin-bottom: 4px; }
@@ -428,8 +454,7 @@
         .badge-concept {
             background-color: rgba(206, 254, 70, 0.06);
             border-color: rgba(206, 254, 70, 0.3);
-            color: var(--accent);
-            width: fit-content;
+            color: var(--accent); width: fit-content;
         }
 
         /* CONCEPT MEDIA */
@@ -482,21 +507,21 @@
         .split-media, .split-content { flex: 1; }
 
         .split-media {
-            background-color: #000; min-height: 300px;
+            background-color: #000; min-height: 400px;
             position: relative; display: flex; align-items: center; justify-content: center;
             overflow: hidden;
         }
-        @media(min-width: 768px) { .split-media { min-height: 400px; } }
         
         .dna-video {
             width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.95;
         }
 
         .split-content {
-            padding: 40px 24px; background-color: var(--bg-card);
+            padding: 64px 48px; background-color: var(--bg-card);
             display: flex; flex-direction: column; justify-content: center;
         }
-        @media(min-width: 768px) { .split-content { padding: 64px 48px; } }
+        /* Mobile padding adjustment */
+        @media (max-width: 767px) { .split-content { padding: 40px 20px; } }
 
         .stat-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
@@ -536,15 +561,19 @@
         }
 
         footer {
-            padding: 60px 0 40px; background-color: var(--bg-card);
+            padding: 80px 0 40px; background-color: var(--bg-card);
             border-top: 1px solid #333; text-align: center;
         }
         
-        .footer-cta-block { margin-bottom: 40px; }
+        .footer-cta-block { margin-bottom: 60px; }
         
         .footer-links {
-            display: flex; justify-content: center; flex-wrap: wrap;
-            gap: 24px 32px; font-size: 12px; text-transform: uppercase; color: var(--text-muted);
+            display: flex; justify-content: center; gap: 32px;
+            font-size: 12px; text-transform: uppercase; color: var(--text-muted);
+        }
+        /* Mobile footer adjustment */
+        @media (max-width: 767px) {
+            .footer-links { flex-wrap: wrap; gap: 16px; }
         }
         
         .footer-links a { color: var(--text-muted); text-decoration: none; }
@@ -563,13 +592,10 @@
 
         .modal__dialog {
             position: relative;
-            width: min(1080px, calc(100% - 24px));
-            max-height: calc(100% - 40px);
-            margin: 20px auto; background: #0b0b0b;
-            border: var(--border-thin); overflow: auto; padding: 20px;
-        }
-        @media(min-width: 768px) {
-            .modal__dialog { padding: 24px; margin: 24px auto; max-height: calc(100% - 48px); width: min(1080px, calc(100% - 32px)); }
+            width: min(1080px, calc(100% - 32px));
+            max-height: calc(100% - 48px);
+            margin: 24px auto; background: #0b0b0b;
+            border: var(--border-thin); overflow: auto; padding: 24px;
         }
 
         .modal__header {
@@ -592,10 +618,7 @@
         }
 
         .modal__gallery {
-            display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr);
-        }
-        @media(min-width: 600px) {
-            .modal__gallery{ grid-template-columns: repeat(3, 1fr); }
+            display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr);
         }
         
         .modal__thumb {
@@ -917,7 +940,7 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        /* CONTACTS SECTION STYLES */
+        /* CONTACTS SECTION STYLES (Restored Visuals) */
         .contacts-hub {
             display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 40px;
         }
@@ -964,7 +987,7 @@
             font-size: 12px; color: #666; font-style: italic; border-top: 1px solid #333; padding-top: 12px; margin-top: 12px;
         }
 
-        /* RADAR MAP STYLES */
+        /* RADAR MAP STYLES (Restored Visuals + New Positions) */
         .radar-map-container {
             position: relative; background: #080808; border: var(--border-thin);
             min-height: 400px; overflow: hidden; display: flex;
@@ -1305,6 +1328,13 @@
             <div class="mono" style="margin-top: 32px; color: #333;">© 2025 KARTEL BOATS</div>
         </div>
     </footer>
+
+    <!-- MOBILE BOTTOM NAV (From Your Request) -->
+    <div class="mobile-nav">
+        <a href="#lineup_selector" class="mob-link"><span>МОДЕЛИ</span></a>
+        <a href="#testdrive_modal" class="mob-link active"><span>ТЕСТ-ДРАЙВ</span></a>
+        <a href="#contacts" class="mob-link"><span>КОНТАКТЫ</span></a>
+    </div>
 
     <!-- ANCHOR FOR TEST DRIVE MODAL (FIXED POSITION) -->
     <div id="testdrive_modal" class="modal">
